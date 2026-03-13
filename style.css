@@ -1,0 +1,277 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #5e60e9;
+}
+
+h1 {
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
+/*****************
+ Memory Game Code
+*****************/
+
+.game-board {
+  display: grid;
+  /* Turns the element into a grid container. 
+     Its children (direct child elements) will be automatically 
+     placed into grid cells, giving you precise control over 
+     layout in rows and columns. */
+
+  grid-template-columns: repeat(4, 120px);
+  /* Defines the column structure of the grid. 
+     - 'repeat(4, 120px)' means: create 4 equal columns, 
+       each 120px wide.
+     - This is useful when you want fixed-size "cards" 
+       or boxes that line up neatly in a grid. */
+
+  gap: 12px;
+  /* Sets spacing between grid items (both rows and columns). 
+     Here each item will have 12px of space separating it 
+     from its neighbors. 
+     It's a shorthand for 'row-gap' and 'column-gap'. */
+}
+
+.card {
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  /* Prevents the user from selecting/highlighting text inside this element.  
+     - Normally, when you click and drag your mouse over text, the browser highlights it.  
+     - With 'none', that behavior is disabled.  
+     - Common use cases: buttons, icons, cards, or draggable elements where 
+       text selection would feel awkward or unintended. */
+
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card.revealed,
+.card.matched {
+  cursor: default;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+/****************
+ Nine Man Morris
+****************/
+
+.nine-man-morris {
+  background: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.nine-man-morris h1 {
+  margin-bottom: 20px;
+}
+
+.nineBoard {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 2px solid #fff;
+}
+
+/* Draw the nested squares */
+.square {
+  position: absolute;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+.outer {
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+}
+.middle {
+  width: 60%;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+}
+.inner {
+  width: 30%;
+  height: 30%;
+  top: 50%;
+  left: 50%;
+}
+
+/* Center cross lines */
+.line {
+  position: absolute;
+  background: #fff;
+}
+
+.horizontal {
+  height: 2px;
+  width: 90%;
+  top: 50%;
+  left: 5%;
+}
+
+.vertical {
+  width: 2px;
+  height: 90%;
+  top: 5%;
+  left: 50%;
+}
+
+/* Board points */
+.point {
+  all: unset;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #555;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.point:hover {
+  background: #0f0;
+}
+
+/* Player pieces */
+.point.white {
+  background: #fff;
+}
+
+.point.black {
+  background: #000;
+}
+
+/* Status text */
+#status {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/********************************
+ Rock paper scissor lizard spock
+********************************/
+
+.spock {
+  font-family: Arial, sans-serif;
+  /* background-color: #f4f4f9; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#round-result {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#scoreboard {
+  margin-top: 0.5rem;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.scoreboard .scoreboard_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  max-width: 700px;
+  padding: 1.5rem;
+  border: 5px solid black;
+  border-radius: 12px;
+  background: #4354ac;
+  margin: 0 auto;
+}
+
+.scoreboard h3 {
+  text-align: center;
+  color: white;
+}
+
+.scoreboard h2 {
+  font-family: "Cursed Timer ULiL";
+}
+
+.scoreboard .scoreboard_score {
+  background: #0a0001;
+  font-size: 90px;
+  color: #f94f6d;
+  width: 120px;
+  margin: 20px;
+  padding: 15px;
+  text-align: center;
+}
+
+.choice-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* makes it circular */
+  cursor: pointer;
+  margin: 0.5rem;
+  border: 3px solid #007bff;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.choice-button:hover {
+  transform: scale(1.1); /* grows slightly on hover */
+  border-color: #0056b3;
+}
