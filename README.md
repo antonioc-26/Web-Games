@@ -87,18 +87,36 @@ The browser will automatically refresh.
 ```
 web-games/
 ├── README.md
-├── images
+├── assets
+│   ├── css
+│   │   └── style.css
+│   ├── images
+│   │   ├── memory
+│   │   │   ├── Card1.jpg
+│   │   │   ├── Card2.jpg
+│   │   │   ├── backofcard.jpg
+│   │   │   ├── card3.jpg
+│   │   │   ├── card4.jpeg
+│   │   │   ├── card5.jpeg
+│   │   │   ├── card6.jpg
+│   │   │   ├── card7.jpg
+│   │   │   └── card8.jpg
+│   │   └── rpsls
+│   │       ├── lizard.webp
+│   │       ├── paper.jpg
+│   │       ├── rock.jpg
+│   │       ├── scissors.jpg
+│   │       └── spock.jpeg
+│   └── js
+│       ├── memory.js
+│       ├── morris.js
+│       └── rpsls.js
 ├── index.html
-├── memory.html
-├── morris
-├── morris.js
-├── morris2
-├── nine-man-morris.html
 ├── package.json
-├── rock-paper-scissor-lizard-spock.html
-├── rock-paper-scissor-lizard-spock.js
-├── script.js
-└── style.css
+└── pages
+    ├── memory.html
+    ├── nine-man-morris.html
+    └── rock-paper-scissors-lizard-spock.html
 ```
 
 ## Development

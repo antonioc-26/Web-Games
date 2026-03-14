@@ -1,23 +1,62 @@
 <!DOCTYPE html>
+<!--
+  Main Landing Page for Antonio's Mini Games
+  ------------------------------------------
+  This page serves as the central navigation hub for all games included
+  in the project. Each button routes the user to a separate game page.
+
+  Technologies Used:
+  - HTML5 for structure
+  - CSS for styling (assets/css/style.css)
+  - JavaScript on individual game pages
+-->
+
 <html lang="en">
   <head>
+    <!-- Character encoding for proper text rendering -->
     <meta charset="UTF-8" />
+
+    <!-- Ensures responsive scaling on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Improves compatibility with older versions of Internet Explorer -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Browser tab title -->
     <title>Antonio's Mini Games</title>
+
+    <!-- Global stylesheet for layout and visual styling -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body>
+    <!-- Main page heading -->
     <h1>Antonio's Mini Games!</h1>
+
+    <!--
+      Sidebar Navigation
+      ------------------
+      Provides quick access to each game in the project.
+      Each button uses a JavaScript redirect to navigate
+      to the corresponding HTML page.
+    -->
     <nav class="sidebar">
-      <button onclick="location.href='pages/memory.html'">Memory Game</button>
+
+      <!-- Memory Card Matching Game -->
+      <button onclick="location.href='pages/memory.html'">
+        Memory Game
+      </button>
+
+      <!-- Rock Paper Scissors Lizard Spock Game -->
       <button onclick="location.href='pages/rock-paper-scissors-lizard-spock.html'">
         Rock-Paper-Scissor-Lizard-Spock
       </button>
+
+      <!-- Nine Men's Morris Strategy Board Game -->
       <button onclick="location.href='pages/nine-man-morris.html'">
         Nine Man Morris
       </button>
+
     </nav>
   </body>
 </html>

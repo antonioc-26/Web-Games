@@ -1,0 +1,93 @@
+<!--
+============================================================
+Author: Antonio Corona
+Date: 2026-03-14
+Project: Web Games Collection
+Game: Nine Men's Morris
+File: nine-men's-morris.html
+
+Description:
+This page provides the HTML structure for the Nine Men's Morris
+browser game. The board layout and UI elements are defined here,
+while game logic and interaction handling are implemented in the
+external JavaScript file (morris.js).
+
+Technologies Used:
+- HTML5 for structure
+- CSS3 for layout and styling
+- JavaScript for game logic and user interaction
+
+Notes:
+- The board layout is generated using styled div elements.
+- JavaScript dynamically manages gameplay, piece placement,
+  and win conditions.
+============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic document metadata -->
+    <meta charset="UTF-8" />
+
+    <!-- Ensures responsive behavior on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title shown in browser tab -->
+    <title>Nine Men's Morris</title>
+
+    <!-- Global stylesheet used across the Web Games project -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body>
+    <!--
+      Main container for the Nine Men's Morris game interface.
+      Groups the game board and status display.
+    -->
+    <div class="nine-man-morris">
+      <h1>Nine Men's Morris Game</h1>
+
+      <!--
+        Game board container.
+        The nested div elements represent the visual structure
+        of the Morris board including the three squares and
+        connecting lines.
+        Individual playable positions are created dynamically
+        via JavaScript.
+      -->
+      <div class="nineBoard" id="nineBoard">
+        <div class="square outer"></div>
+        <div class="square middle"></div>
+        <div class="square inner"></div>
+
+        <!-- Board connector lines -->
+        <div class="line horizontal"></div>
+        <div class="line vertical"></div>
+      </div>
+
+      <!--
+        Status display area.
+        JavaScript updates this element to show messages such as:
+        - Current player's turn
+        - Mill formation notifications
+        - Win conditions
+      -->
+      <div id="status"></div>
+    </div>
+
+    <!--
+      Navigation button allowing users to return to the main
+      games menu (index page).
+    -->
+    <button onclick="location.href='../index.html'">Home Page</button>
+
+    <!--
+      Game logic script.
+      The "defer" attribute ensures the script loads after the
+      HTML document has been parsed, preventing blocking during
+      page load.
+    -->
+    <script src="../assets/js/morris.js" defer></script>
+  </body>
+</html>
