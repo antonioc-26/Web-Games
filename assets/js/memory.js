@@ -2,14 +2,14 @@
  * Memory Game Java Script
  *************************/
 const imagePaths = [
-  "images/Card1.jpg",
-  "images/Card2.jpg",
-  "images/card3.jpg",
-  "images/card4.jpeg",
-  "images/card5.jpeg",
-  "images/card6.jpg",
-  "images/card7.jpg",
-  "images/card8.jpg",
+  "../assets/images/memory/Card1.jpg",
+  "../assets/images/memory/Card2.jpg",
+  "../assets/images/memory/card3.jpg",
+  "../assets/images/memory/card4.jpeg",
+  "../assets/images/memory/card5.jpeg",
+  "../assets/images/memory/card6.jpg",
+  "../assets/images/memory/card7.jpg",
+  "../assets/images/memory/card8.jpg",
 ];
 
 // If imagePaths = ["a", "b", "c"], then:
@@ -46,7 +46,7 @@ function createCard(imageSrc, index) {
   card.dataset.index = index;
 
   const img = document.createElement("img");
-  img.src = "images/backofcard.jpg"; // face-down initially
+  img.src = "../assets/images/memory/backofcard.jpg"; // face-down initially
   card.appendChild(img);
 
   card.addEventListener("click", () => flipCard(card));
@@ -93,9 +93,8 @@ function flipCard(card) {
     resetTurn();
   } else {
     setTimeout(() => {
-      first.querySelector("img").src = "images/backofcard.jpg";
-      second.querySelector("img").src = "images/backofcard.jpg";
-      first.classList.remove("revealed");
+      first.querySelector("img").src = "../assets/images/memory/backofcard.jpg";
+      second.querySelector("img").src = "../assets/images/memory/backofcard.jpg";      first.classList.remove("revealed");
       second.classList.remove("revealed");
       resetTurn();
     }, 1000);
