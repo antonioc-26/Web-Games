@@ -1,0 +1,150 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Date: 2026-03-14
+Project: Web Games Collection
+Game: Rock Paper Scissors Lizard Spock
+File: rock-paper-scissors-lizard-spock.html
+
+Description:
+This page provides the user interface for the Rock Paper Scissors Lizard Spock
+game. Players select one of five options using clickable images. The game logic
+(computer choice generation, round evaluation, scoring, and reset functionality)
+is implemented in the external JavaScript file: rpsls.js.
+
+Technologies Used:
+HTML5 – page structure
+CSS3 – layout and styling
+JavaScript – game logic and interactivity
+===============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text rendering -->
+    <meta charset="UTF-8" />
+
+    <!-- Ensures responsive scaling on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title shown in the browser tab -->
+    <title>Rock Paper Scissor Lizard Spock</title>
+
+    <!-- Global stylesheet for layout and styling -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- Main wrapper for the RPSLS game interface -->
+    <div class="spock">
+      <div class="container">
+
+        <!-- Game title -->
+        <h1>Rock Paper Scissor Lizard Spock</h1>
+
+        <!--
+          Choice Selection Area
+          ---------------------
+          Each image represents a selectable option in the game.
+          The data-choice attribute is used by the JavaScript logic
+          to determine which option the player selected.
+        -->
+        <div class="choices">
+          <img
+            src="../assets/images/rpsls/rock.jpg"
+            data-choice="Rock"
+            alt="Rock"
+            class="choice-button"
+          />
+          <img
+            src="../assets/images/rpsls/paper.jpg"
+            data-choice="Paper"
+            alt="Paper"
+            class="choice-button"
+          />
+          <img
+            src="../assets/images/rpsls/scissors.jpg"
+            data-choice="Scissors"
+            alt="Scissors"
+            class="choice-button"
+          />
+          <img
+            src="../assets/images/rpsls/lizard.webp"
+            data-choice="Lizard"
+            alt="Lizard"
+            class="choice-button"
+          />
+          <img
+            src="../assets/images/rpsls/spock.jpeg"
+            data-choice="Spock"
+            alt="Spock"
+            class="choice-button"
+          />
+        </div>
+
+        <!--
+          Results and Scoreboard Section
+          ------------------------------
+          Displays the current score for the player and computer,
+          as well as the result of the current round.
+        -->
+        <div class="results">
+          <div class="scoreboard">
+            <div class="scoreboard_container">
+
+              <!-- Player Score Column -->
+              <div class="column">
+                <h3>PLAYER</h3>
+                <h2 id="playerScore" class="scoreboard_score">0</h2>
+              </div>
+
+              <!-- Computer Score Column -->
+              <div class="column">
+                <h3>COMPUTER</h3>
+                <h2 id="computerScore" class="scoreboard_score">0</h2>
+              </div>
+
+            </div>
+          </div>
+
+          <!--
+            Round result message.
+            Updated dynamically by rpsls.js after each round.
+          -->
+          <p id="round-result">Make your choice!</p>
+
+          <!--
+            Previous scoreboard display (deprecated).
+            Kept as a reference during development.
+          -->
+          <!-- <p id="scoreboard">Player: 0 | Computer: 0</p> -->
+        </div>
+
+        <!--
+          Button to reset the scoreboard.
+          The reset behavior is implemented in the JavaScript file.
+        -->
+        <button id="reset">Reset Score</button>
+
+      </div>
+    </div>
+
+    <!-- Navigation button to return to the main game menu -->
+    <button onclick="location.href='../index.html'">Home Page</button>
+
+    <!--
+      Game logic script
+      -----------------
+      Handles:
+      - Player choice detection
+      - Computer random selection
+      - Win/lose/tie logic
+      - Score updates
+      - Reset functionality
+
+      "defer" ensures the script runs after the HTML is fully parsed.
+    -->
+    <script src="../assets/js/rpsls.js" defer></script>
+  </body>
+</html>

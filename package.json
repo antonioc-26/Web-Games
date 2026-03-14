@@ -1,16 +1,11 @@
 {
-  "name": "html-css",
+  "name": "web-games",
   "version": "1.0.0",
-  "description": "A template for HTML and CSS",
-  "main": "index.html",
+  "description": "A collection of browser-based mini games built with HTML, CSS, and JavaScript.",
   "scripts": {
-    "start": "serve"
+    "start": "serve ."
   },
-  "keywords": [
-    "html",
-    "css"
-  ],
-  "author": "Ives van Hoorne",
+  "author": "Antonio Corona",
   "license": "MIT",
   "devDependencies": {
     "serve": "11.2.0"
