@@ -51,9 +51,7 @@ This is the easiest way to run the project locally.
 
 1. Open **VS Code**
 2. Click the **Extensions** icon
-3. Search for:
-
-Live Server
+3. Search for: "Live Server"
 
 4. Install **Live Server (by Ritwick Dey)**
 
