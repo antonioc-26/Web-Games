@@ -1,122 +1,226 @@
+/*
+Author: Antonio Corona
+Date: 2026-03-14
+
+Stylesheet
+
+Defines styling for the web games.
+*/
+
+/* =========================================================
+   GLOBAL PAGE STYLES
+   ---------------------------------------------------------
+   These rules apply across the overall site unless a more
+   specific game section overrides them.
+   ========================================================= */
+
 body {
+  /* Sets the default font for the page */
   font-family: sans-serif;
+
+  /* Centers inline text content horizontally */
   text-align: center;
+
+  /* Applies the main page background color */
   background-color: #5e60e9;
 }
 
 h1 {
+  /* Adds spacing above main headings */
   margin-top: 20px;
+
+  /* Underlines page headings for emphasis */
   text-decoration: underline;
 }
 
-/*****************
- Memory Game Code
-*****************/
+/* Navigation buttons such as Home Page / Rules */
+.nav-buttons {
+  /* Places buttons on one row */
+  display: flex;
 
-.game-board {
-  display: grid;
-  /* Turns the element into a grid container. 
-     Its children (direct child elements) will be automatically 
-     placed into grid cells, giving you precise control over 
-     layout in rows and columns. */
+  /* Centers the group horizontally */
+  justify-content: center;
 
-  grid-template-columns: repeat(4, 120px);
-  /* Defines the column structure of the grid. 
-     - 'repeat(4, 120px)' means: create 4 equal columns, 
-       each 120px wide.
-     - This is useful when you want fixed-size "cards" 
-       or boxes that line up neatly in a grid. */
+  /* Adds spacing between buttons */
+  gap: 15px;
 
-  gap: 12px;
-  /* Sets spacing between grid items (both rows and columns). 
-     Here each item will have 12px of space separating it 
-     from its neighbors. 
-     It's a shorthand for 'row-gap' and 'column-gap'. */
+  /* Adds space above the button group */
+  margin-top: 20px;
 }
 
-.card {
-  width: 120px;
-  height: 160px;
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-  /* Prevents the user from selecting/highlighting text inside this element.  
-     - Normally, when you click and drag your mouse over text, the browser highlights it.  
-     - With 'none', that behavior is disabled.  
-     - Common use cases: buttons, icons, cards, or draggable elements where 
-       text selection would feel awkward or unintended. */
+/* =========================================================
+   MEMORY GAME
+   ---------------------------------------------------------
+   Styles for the memory card game layout, card appearance,
+   and overall board/container alignment.
+   ========================================================= */
 
+/* Main board that holds all memory cards */
+.game-board {
+  /* Uses CSS Grid to arrange cards in rows and columns */
+  display: grid;
+
+  /* Creates 4 fixed-width columns for the card layout */
+  grid-template-columns: repeat(4, 120px);
+
+  /* Adds spacing between rows and columns */
+  gap: 12px;
+}
+
+/* Individual memory card container */
+.card {
+  /* Fixed card width */
+  width: 120px;
+
+  /* Fixed card height */
+  height: 160px;
+
+  /* Rounds card corners */
+  border-radius: 10px;
+
+  /* Shows pointer cursor to indicate interactivity */
+  cursor: pointer;
+
+  /* Prevents accidental text/image selection while clicking */
+  user-select: none;
+
+  /* Hides anything that extends outside the rounded edges */
   overflow: hidden;
+
+  /* Adds a subtle shadow for depth */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+/* States for cards that should no longer appear clickable */
 .card.revealed,
 .card.matched {
+  /* Returns cursor to default once interaction is no longer needed */
   cursor: default;
 }
 
+/* Image inside each memory card */
 .card img {
+  /* Makes image fill the full card width */
   width: 100%;
+
+  /* Makes image fill the full card height */
   height: 100%;
+
+  /* Ensures image covers the card without distortion */
   object-fit: cover;
+
+  /* Removes inline spacing issues from images */
   display: block;
+
+  /* Prevents the image itself from intercepting click events */
   pointer-events: none;
+
+  /* Matches image corners to card rounding */
   border-radius: 10px;
 }
 
+/* Wrapper that centers the memory game on the page */
 .game-container {
+  /* Uses flexbox for vertical layout */
   display: flex;
+
+  /* Stacks child elements vertically */
   flex-direction: column;
+
+  /* Centers children horizontally */
   align-items: center;
+
+  /* Centers children vertically */
   justify-content: center;
+
+  /* Gives the container enough height to center content nicely */
   min-height: 80vh;
 }
 
-/****************
- Nine Man Morris
-****************/
+/* =========================================================
+   NINE MEN'S MORRIS
+   ---------------------------------------------------------
+   Styles for the Nine Men's Morris game board, board lines,
+   points, pieces, and game status text.
+   ========================================================= */
 
+/* Main page wrapper for the Nine Men's Morris game */
 .nine-man-morris {
+  /* Dark background specific to this game page */
   background: #222;
+
+  /* White text for contrast */
   color: #fff;
+
+  /* Uses flexbox for page alignment */
   display: flex;
+
+  /* Stacks content vertically */
   flex-direction: column;
+
+  /* Centers content horizontally */
   align-items: center;
+
+  /* Centers content vertically */
   justify-content: center;
+
+  /* Makes the game take up the full viewport height */
   height: 100vh;
+
+  /* Sets font for this section */
   font-family: sans-serif;
 }
 
+/* Heading spacing for the Nine Men's Morris page */
 .nine-man-morris h1 {
+  /* Space below the title before the board begins */
   margin-bottom: 20px;
 }
 
+/* Main board container */
 .nineBoard {
+  /* Allows child elements to be absolutely positioned relative to the board */
   position: relative;
+
+  /* Fixed board width */
   width: 500px;
+
+  /* Fixed board height */
   height: 500px;
+
+  /* Outer border of the board */
   border: 2px solid #fff;
 }
 
-/* Draw the nested squares */
+/* Nested board squares */
 .square {
+  /* Allows each square to be placed exactly on the board */
   position: absolute;
+
+  /* White square outlines */
   border: 2px solid #fff;
+
+  /* Centers each square based on its top/left coordinates */
   transform: translate(-50%, -50%);
 }
 
+/* Outer square */
 .outer {
   width: 90%;
   height: 90%;
   top: 50%;
   left: 50%;
 }
+
+/* Middle square */
 .middle {
   width: 60%;
   height: 60%;
   top: 50%;
   left: 50%;
 }
+
+/* Inner square */
 .inner {
   width: 30%;
   height: 30%;
@@ -124,12 +228,16 @@ h1 {
   left: 50%;
 }
 
-/* Center cross lines */
+/* Board connector lines */
 .line {
+  /* Positioned relative to the board */
   position: absolute;
+
+  /* White line color */
   background: #fff;
 }
 
+/* Horizontal connector line */
 .horizontal {
   height: 2px;
   width: 90%;
@@ -137,6 +245,7 @@ h1 {
   left: 5%;
 }
 
+/* Vertical connector line */
 .vertical {
   width: 2px;
   height: 90%;
@@ -144,134 +253,273 @@ h1 {
   left: 50%;
 }
 
-/* Board points */
+/* Interactive board points where pieces can be placed */
 .point {
+  /* Removes default button styling completely */
   all: unset;
+
+  /* Allows exact placement on the board */
   position: absolute;
+
+  /* Point width */
   width: 16px;
+
+  /* Point height */
   height: 16px;
+
+  /* Default empty-point color */
   background: #555;
+
+  /* Makes the point circular */
   border-radius: 50%;
+
+  /* Centers point on its coordinates */
   transform: translate(-50%, -50%);
+
+  /* Indicates the point can be clicked */
   cursor: pointer;
 }
 
+/* Hover state for available board points */
 .point:hover {
+  /* Highlights the point when hovered */
   background: #0f0;
 }
 
-/* Player pieces */
+/* White player's pieces */
 .point.white {
   background: #fff;
 }
 
+/* Black player's pieces */
 .point.black {
   background: #000;
 }
 
-/* Status text */
+/* Game status text below the board */
 #status {
+  /* Adds spacing above the status message */
   margin-top: 20px;
+
+  /* Slightly enlarges the text */
   font-size: 1.2em;
 }
 
-/********************************
- Rock paper scissor lizard spock
-********************************/
+/* =========================================================
+   ROCK PAPER SCISSORS LIZARD SPOCK
+   ---------------------------------------------------------
+   Styles for the RPSLS game layout, controls, scoreboard,
+   and navigation buttons.
+   ========================================================= */
 
+/* Main wrapper for the RPSLS page */
 .spock {
+  /* Uses Arial for this specific game section */
   font-family: Arial, sans-serif;
+
+  /* Background color intentionally left commented out */
   /* background-color: #f4f4f9; */
+
+  /* Uses flexbox to center the game container */
   display: flex;
+
+  /* Centers horizontally */
   justify-content: center;
+
+  /* Centers vertically */
   align-items: center;
+
+  /* Full viewport height */
   height: 100vh;
+
+  /* Removes default body/page margin inside this section */
   margin: 0;
 }
 
+/* Central content box for the RPSLS game */
 .container {
+  /* Centers text inside the container */
   text-align: center;
+
+  /* White card-style background */
   background-color: #fff;
+
+  /* Inner spacing */
   padding: 2rem;
+
+  /* Rounded container corners */
   border-radius: 10px;
+
+  /* Soft shadow around the container */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
+/* General button styling */
 button {
+  /* Vertical and horizontal padding */
   padding: 0.5rem 1rem;
+
+  /* Space around each button */
   margin: 0.5rem;
+
+  /* Standard readable font size */
   font-size: 1rem;
+
+  /* Pointer cursor on hover */
   cursor: pointer;
+
+  /* Removes default border */
   border: none;
+
+  /* Slight rounding for a modern look */
   border-radius: 5px;
+
+  /* Primary blue background */
   background-color: #007bff;
+
+  /* White text for contrast */
   color: #fff;
+
+  /* Smooth hover transition */
   transition: background-color 0.2s;
 }
 
+/* General button hover state */
 button:hover {
+  /* Darker blue on hover */
   background-color: #0056b3;
 }
 
+/* Displays round-by-round result text */
 #round-result {
+  /* Space above the result text */
   margin-top: 1rem;
+
+  /* Makes the result more prominent */
   font-size: 1.2rem;
+
+  /* Boldens the result text */
   font-weight: bold;
 }
 
+/* Basic spacing for the scoreboard section */
 #scoreboard {
   margin-top: 0.5rem;
 }
 
+/* Outer scoreboard wrapper */
 .scoreboard {
+  /* Uses flexbox for alignment */
   display: flex;
+
+  /* Centers scoreboard content horizontally */
   justify-content: center;
+
+  /* Adds space above the scoreboard */
   margin-top: 20px;
 }
 
+/* Main scoreboard panel */
 .scoreboard .scoreboard_container {
+  /* Uses flexbox to align score sections */
   display: flex;
+
+  /* Evenly distributes scoreboard items */
   justify-content: space-evenly;
+
+  /* Vertically aligns items in the panel */
   align-items: center;
+
+  /* Responsive width */
   width: 80%;
+
+  /* Prevents scoreboard from growing too wide */
   max-width: 700px;
+
+  /* Inner spacing */
   padding: 1.5rem;
+
+  /* Thick outer border */
   border: 5px solid black;
+
+  /* Rounded corners */
   border-radius: 12px;
+
+  /* Background color for the scoreboard panel */
   background: #4354ac;
+
+  /* Centers the panel */
   margin: 0 auto;
 }
 
+/* Scoreboard labels/headings */
 .scoreboard h3 {
+  /* Centers heading text */
   text-align: center;
+
+  /* White text for visibility */
   color: white;
 }
 
+/* Score numbers/title styling */
 .scoreboard h2 {
+  /* Uses custom digital-style font if available */
   font-family: "Cursed Timer ULiL";
 }
 
+/* Numeric score display box */
 .scoreboard .scoreboard_score {
+  /* Dark background for scoreboard number box */
   background: #0a0001;
+
+  /* Large score text */
   font-size: 90px;
+
+  /* Bright score color for contrast */
   color: #f94f6d;
+
+  /* Fixed width for consistent alignment */
   width: 120px;
+
+  /* Outer spacing */
   margin: 20px;
+
+  /* Inner spacing */
   padding: 15px;
+
+  /* Centers the score number text */
   text-align: center;
 }
 
+/* Circular image-based choice buttons */
 .choice-button {
+  /* Fixed width */
   width: 100px;
+
+  /* Fixed height */
   height: 100px;
-  border-radius: 50%; /* makes it circular */
+
+  /* Makes the button circular */
+  border-radius: 50%;
+
+  /* Indicates interactivity */
   cursor: pointer;
+
+  /* Space around each choice button */
   margin: 0.5rem;
+
+  /* Blue border around each choice */
   border: 3px solid #007bff;
+
+  /* Smooth hover effects */
   transition: transform 0.2s, border-color 0.2s;
 }
 
+/* Hover effect for choice buttons */
 .choice-button:hover {
-  transform: scale(1.1); /* grows slightly on hover */
+  /* Slightly enlarges the button */
+  transform: scale(1.1);
+
+  /* Darkens the border on hover */
   border-color: #0056b3;
 }
