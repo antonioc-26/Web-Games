@@ -105,6 +105,7 @@ web-games/
 │   │       ├── lizard.webp
 │   │       ├── paper.jpg
 │   │       ├── rock.jpg
+│   │       ├── rpsls-rules.jpg   ← NEW Rules Image
 │   │       ├── scissors.jpg
 │   │       └── spock.jpeg
 │   └── js
@@ -116,7 +117,8 @@ web-games/
 └── pages
     ├── memory.html
     ├── nine-man-morris.html
-    └── rock-paper-scissors-lizard-spock.html
+    ├── rock-paper-scissors-lizard-spock.html
+    └── rpsls-rules.html   ← NEW PAGE
 ```
 
 ## Development

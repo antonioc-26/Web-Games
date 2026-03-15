@@ -330,10 +330,11 @@ h1 {
   align-items: center;
 
   /* Full viewport height */
-  height: 100vh;
+  height: 80vh;
 
   /* Removes default body/page margin inside this section */
   margin: 0;
+  margin-top: 40px;
 }
 
 /* Central content box for the RPSLS game */
