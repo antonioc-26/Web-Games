@@ -18,6 +18,11 @@ The games run entirely in the browser and require no backend services.
 
 Additional games may be added in future updates.
 
+## Live Demo
+Play the games here:
+
+https://antonio-corona.github.io/web-games
+
 ## Tech Stack
 - HTML5
 - CSS3
