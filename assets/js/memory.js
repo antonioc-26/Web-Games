@@ -304,3 +304,43 @@ function stopTimer() {
   clearInterval(timerInterval);
   timerInterval = null;
 }
+
+
+/**
+ * ==========================================================
+ * resetGame()
+ * ----------------------------------------------------------
+ * Restarts the Memory Game so the player can play again.
+ *
+ * Actions performed:
+ *  - Stop the current timer
+ *  - Reset timer and move counters
+ *  - Clear turn-tracking state
+ *  - Remove all existing cards from the board
+ *  - Reshuffle the cards
+ *  - Rebuild the board with a fresh layout
+ * ==========================================================
+ */
+function resetGame() {
+  stopTimer();
+
+  // Reset game state values
+  first = null;
+  second = null;
+  lock = false;
+  moves = 0;
+  timer = 0;
+
+  // Reset UI displays
+  movesDisplay.textContent = moves;
+  document.getElementById("timer").textContent = timer;
+
+  // Clear the current board
+  board.innerHTML = "";
+
+  // Reshuffle the existing card array in place
+  shuffle(cards);
+
+  // Rebuild the board with the new shuffled order
+  cards.forEach((src, i) => createCard(src, i));
+}
