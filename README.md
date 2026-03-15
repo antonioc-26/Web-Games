@@ -21,7 +21,7 @@ Additional games may be added in future updates.
 ## Live Demo
 Play the games here:
 
-https://antonio-corona.github.io/web-games
+https://antonioc-26.github.io/Web-Games/
 
 ## Tech Stack
 - HTML5
