@@ -1,33 +1,84 @@
 # Web Games
 
-A collection of web-based games built using **HTML, CSS, and JavaScript**.
-
-This project demonstrates front-end development fundamentals through interactive gameplay and clean UI design.
-
-The games run entirely in the browser and require no backend services.
-
-## Features
-- Interactive browser gameplay
-- Responsive styling
-- Score tracking and game logic in JavaScript
-
-## Games Included
-- Nine Men's Morris
-- Rock Paper Scissors Lizard Spock
-- Memory Game  
-
-Additional games may be added in future updates.
+A browser-based collection of interactive games built with **HTML, CSS, and JavaScript**.  
+This project was created to strengthen front-end development skills through game logic, DOM manipulation, UI design, and browser-side state management.
 
 ## Live Demo
-Play the games here:
 
-https://antonioc-26.github.io/Web-Games/
+Play the project here:  
+**https://antonioc-26.github.io/Web-Games/**
+
+---
+
+## Project Overview
+
+Web Games is a front-end portfolio project that combines multiple browser-playable experiences into one cohesive site. The project focuses on:
+
+- interactive JavaScript-based gameplay
+- responsive page structure and styling
+- dynamic DOM updates
+- reusable front-end organization
+- persistent browser storage for player statistics
+
+This repository is intended to demonstrate both technical fundamentals and project presentation quality for internships and entry-level software roles.
+
+---
+
+## Games Included
+
+### 1. Memory Game
+A classic card-matching game where the player flips cards to find matching pairs.
+
+**Highlights**
+- dynamically generated card board
+- move counter
+- live timer
+- persistent best-score tracking with `localStorage`
+
+### 2. Rock Paper Scissors Lizard Spock
+An expanded version of Rock Paper Scissors with five move options and round-based scoring.
+
+**Highlights**
+- computer opponent with randomized choice generation
+- live score updates
+- persistent lifetime match statistics with `localStorage`
+- dedicated rules page
+
+### 3. Nine Men’s Morris
+A browser implementation of the classic strategy board game.
+
+**Highlights**
+- piece placement phase
+- movement phase
+- mill detection
+- turn-based status messaging
+- restart support
+
+---
 
 ## Tech Stack
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- Node.js (optional for local static server)
+
+- **HTML5**
+- **CSS3**
+- **Vanilla JavaScript**
+- **localStorage**
+- **Node.js / serve** for optional local hosting
+
+---
+
+## What This Project Demonstrates
+
+This project was built to showcase practical front-end skills, including:
+
+- DOM manipulation
+- event-driven JavaScript
+- game-state management
+- browser storage
+- responsive layout structure
+- maintainable project organization
+- user-focused UI improvements
+
+---
 
 ## First Time Setup
 
@@ -88,6 +139,8 @@ When you edit and save any file such as:
 
 The browser will automatically refresh.
 
+---
+
 ## Project Structure
 ```
 web-games/
@@ -110,7 +163,7 @@ web-games/
 │   │       ├── lizard.webp
 │   │       ├── paper.jpg
 │   │       ├── rock.jpg
-│   │       ├── rpsls-rules.jpg   ← NEW Rules Image
+│   │       ├── rpsls-rules.jpg  
 │   │       ├── scissors.jpg
 │   │       └── spock.jpeg
 │   └── js
@@ -123,8 +176,10 @@ web-games/
     ├── memory.html
     ├── nine-mems-morris.html
     ├── rock-paper-scissors-lizard-spock.html
-    └── rpsls-rules.html   ← NEW PAGE
+    └── rpsls-rules.html  
 ```
+
+---
 
 ## Development
 
@@ -133,6 +188,8 @@ If you plan to modify or add games:
 1. Run the project using Live Server
 2. Edit HTML/CSS/JavaScript files
 3. Test changes in the browser with auto-refresh
+
+---
 
 ## Contributing
 
@@ -145,9 +202,13 @@ If you'd like to improve the project:
 3. Commit your changes
 4. Open a pull request
 
+---
+
 ## License
 
 This project is open source and available under the **MIT License**.
+
+---
 
 ## Author
 
