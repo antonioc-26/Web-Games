@@ -121,7 +121,7 @@ web-games/
 ├── package.json
 └── pages
     ├── memory.html
-    ├── nine-man-morris.html
+    ├── nine-mems-morris.html
     ├── rock-paper-scissors-lizard-spock.html
     └── rpsls-rules.html   ← NEW PAGE
 ```

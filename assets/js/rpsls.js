@@ -34,9 +34,6 @@ const buttons = document.querySelectorAll("[data-choice]");
 // Element that displays the result of the current round
 const resultText = document.getElementById("round-result");
 
-// Scoreboard container
-const scoreboard = document.getElementById("scoreboard");
-
 // Reset button element
 const resetBtn = document.getElementById("reset");
 
@@ -157,9 +154,6 @@ function playRound(playerSelection) {
 function updateScore() {
   playerScoreEl.textContent = playerScore;
   computerScoreEl.textContent = computerScore;
-
-  // Optional alternate scoreboard display
-  // scoreboard.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
 }
 
 
