@@ -46,7 +46,7 @@ Notes:
       Groups the game board and status display.
     -->
     <div class="nine-man-morris">
-      <h1>Nine Men's Morris Game</h1>
+      <h1>Nine Men’s Morris</h1>
 
       <!--
         Game board container.
@@ -73,14 +73,17 @@ Notes:
         - Mill formation notifications
         - Win conditions
       -->
-      <div id="status"></div>
-    </div>
+      <div id="status" aria-live="polite"></div>
 
-    <!--
-      Navigation button allowing users to return to the main
-      games menu (index page).
-    -->
-    <button onclick="location.href='../index.html'">Home Page</button>
+      <!--
+        Navigation button allowing users to return to the main
+        games menu (index page).
+      -->
+      <div class="nav-buttons">
+        <button id="restart" type="button">Restart Game</button>
+        <button type="button" onclick="location.href='../index.html'">Home Page</button>
+      </div>
+    </div>
 
     <!--
       Game logic script.

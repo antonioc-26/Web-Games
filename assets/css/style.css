@@ -122,6 +122,14 @@ p {
   opacity: 0.95;
 }
 
+button:focus-visible,
+.primary-link-button:focus-visible,
+.secondary-link-button:focus-visible,
+.card-link-button:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+
 .highlights-section,
 .homepage-main,
 .site-footer {
