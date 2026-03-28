@@ -34,15 +34,20 @@ const buttons = document.querySelectorAll("[data-choice]");
 // Element that displays the result of the current round
 const resultText = document.getElementById("round-result");
 
-// Scoreboard container
-const scoreboard = document.getElementById("scoreboard");
+// Persistent statistics display elements
+const totalPlayerWinsEl = document.getElementById("totalPlayerWins");
+const totalComputerWinsEl = document.getElementById("totalComputerWins");
+const completedMatchesEl = document.getElementById("completedMatches");
+
+// Storage key used for persisting long-term RPSLS statistics
+const RPSLS_STATS_KEY = "webGames.rpsls.stats";
 
 // Reset button element
 const resetBtn = document.getElementById("reset");
 
 // Individual score elements
-let computerScoreEl = document.getElementById("computerScore");
-let playerScoreEl = document.getElementById("playerScore");
+const computerScoreEl = document.getElementById("computerScore");
+const playerScoreEl = document.getElementById("playerScore");
 
 
 /**
@@ -60,6 +65,95 @@ let computerScore = 0;
 
 // Boolean flag used to disable gameplay once a winner is declared
 let gameOver = false;
+
+
+/**
+ * ==========================================================
+ * loadRpslsStats()
+ * ----------------------------------------------------------
+ * Reads persisted Rock Paper Scissors Lizard Spock statistics
+ * from localStorage.
+ *
+ * Returns:
+ *   {Object} Saved lifetime match statistics
+ * ==========================================================
+ */
+function loadRpslsStats() {
+  const savedStats = localStorage.getItem(RPSLS_STATS_KEY);
+
+  if (!savedStats) {
+    return {
+      totalPlayerWins: 0,
+      totalComputerWins: 0,
+      completedMatches: 0,
+    };
+  }
+
+  try {
+    return JSON.parse(savedStats);
+  } catch (error) {
+    console.error("Unable to parse saved RPSLS statistics.", error);
+
+    return {
+      totalPlayerWins: 0,
+      totalComputerWins: 0,
+      completedMatches: 0,
+    };
+  }
+}
+
+/**
+ * ==========================================================
+ * saveRpslsStats(stats)
+ * ----------------------------------------------------------
+ * Persists updated RPSLS statistics into localStorage.
+ *
+ * Parameters:
+ *   {Object} stats - Statistics object to save
+ * ==========================================================
+ */
+function saveRpslsStats(stats) {
+  localStorage.setItem(RPSLS_STATS_KEY, JSON.stringify(stats));
+}
+
+/**
+ * ==========================================================
+ * renderRpslsStats()
+ * ----------------------------------------------------------
+ * Displays saved lifetime statistics in the current UI.
+ * ==========================================================
+ */
+function renderRpslsStats() {
+  const stats = loadRpslsStats();
+
+  totalPlayerWinsEl.textContent = stats.totalPlayerWins;
+  totalComputerWinsEl.textContent = stats.totalComputerWins;
+  completedMatchesEl.textContent = stats.completedMatches;
+}
+
+/**
+ * ==========================================================
+ * recordCompletedMatch(winner)
+ * ----------------------------------------------------------
+ * Updates persistent statistics after a full match has ended.
+ *
+ * Parameters:
+ *   {string} winner - Either "player" or "computer"
+ * ==========================================================
+ */
+function recordCompletedMatch(winner) {
+  const stats = loadRpslsStats();
+
+  if (winner === "player") {
+    stats.totalPlayerWins++;
+  } else if (winner === "computer") {
+    stats.totalComputerWins++;
+  }
+
+  stats.completedMatches++;
+  saveRpslsStats(stats);
+  renderRpslsStats();
+}
 
 
 /**
@@ -157,9 +251,6 @@ function playRound(playerSelection) {
 function updateScore() {
   playerScoreEl.textContent = playerScore;
   computerScoreEl.textContent = computerScore;
-
-  // Optional alternate scoreboard display
-  // scoreboard.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
 }
 
 
@@ -181,10 +272,11 @@ function checkWinner() {
   if (playerScore === 10) {
     resultText.textContent = `Player reaches 10 first! Player wins! 🎉`;
     gameOver = true;
-  } 
-  else if (computerScore === 10) {
+    recordCompletedMatch("player");
+  } else if (computerScore === 10) {
     resultText.textContent = `Computer reaches 10 first! Computer wins! 🤖`;
     gameOver = true;
+    recordCompletedMatch("computer");
   }
 
   // Disable player input if the game has ended
@@ -236,4 +328,19 @@ resetBtn.addEventListener("click", () => {
 
   // Re-enable all choice buttons
   buttons.forEach((button) => (button.style.pointerEvents = "auto"));
+
+  // Re-render persistent statistics after resetting the current match
+  renderRpslsStats(); 
 });
+
+
+/**
+ * ==========================================================
+ * INITIAL PAGE SETUP
+ * ----------------------------------------------------------
+ * Ensures the UI is synchronized with saved persistent data
+ * and default score state as soon as the page loads.
+ * ==========================================================
+ */
+renderRpslsStats();
+updateScore();

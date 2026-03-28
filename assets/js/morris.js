@@ -206,7 +206,15 @@ let gameOver = false;
  * button.
  */
 points.forEach((p) => p.addEventListener("click", onClick));
-restartBtn.addEventListener("click", restartGame);
+
+/*
+  Attach the restart handler only if the button exists in the DOM.
+  This defensive check prevents runtime errors if the markup is ever
+  modified or reused in a different context.
+*/
+if (restartBtn) {
+  restartBtn.addEventListener("click", restartGame);
+}
 
 
 /**

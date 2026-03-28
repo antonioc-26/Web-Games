@@ -68,6 +68,13 @@ const board = document.getElementById("gameBoard");
 // Element used to display the player's move count
 const movesDisplay = document.getElementById("moves");
 
+// Elements used to display persisted best-performance statistics
+const bestTimeDisplay = document.getElementById("bestTime");
+const bestMovesDisplay = document.getElementById("bestMoves");
+
+// Storage key used to persist memory game statistics in the browser
+const MEMORY_STATS_KEY = "webGames.memory.stats";
+
 
 /**
  * ===============================
@@ -122,6 +129,100 @@ function shuffle(array) {
 
 /**
  * ==========================================================
+ * loadMemoryStats()
+ * ----------------------------------------------------------
+ * Reads persisted memory-game statistics from localStorage.
+ *
+ * Returns:
+ *   {Object} An object containing:
+ *   - bestTime  {number|null}
+ *   - bestMoves {number|null}
+ * ==========================================================
+ */
+function loadMemoryStats() {
+  const savedStats = localStorage.getItem(MEMORY_STATS_KEY);
+
+  if (!savedStats) {
+    return {
+      bestTime: null,
+      bestMoves: null,
+    };
+  }
+
+  try {
+    return JSON.parse(savedStats);
+  } catch (error) {
+    console.error("Unable to parse saved memory statistics.", error);
+
+    return {
+      bestTime: null,
+      bestMoves: null,
+    };
+  }
+}
+
+
+/**
+ * ==========================================================
+ * saveMemoryStats(stats)
+ * ----------------------------------------------------------
+ * Persists the supplied memory-game statistics into browser
+ * storage for use across future visits.
+ *
+ * Parameters:
+ *   {Object} stats - Statistics object to save
+ * ==========================================================
+ */
+function saveMemoryStats(stats) {
+  localStorage.setItem(MEMORY_STATS_KEY, JSON.stringify(stats));
+}
+
+
+/**
+ * ==========================================================
+ * renderMemoryStats()
+ * ----------------------------------------------------------
+ * Updates the stats panel in the UI using currently saved
+ * localStorage values.
+ * ==========================================================
+ */
+function renderMemoryStats() {
+  const stats = loadMemoryStats();
+
+  bestTimeDisplay.textContent =
+    stats.bestTime === null ? "--" : `${stats.bestTime} seconds`;
+
+  bestMovesDisplay.textContent =
+    stats.bestMoves === null ? "--" : stats.bestMoves;
+}
+
+
+/**
+ * ==========================================================
+ * updateBestMemoryStats()
+ * ----------------------------------------------------------
+ * Compares the current completed game against saved best
+ * statistics and updates localStorage when a new best result
+ * is achieved.
+ * ==========================================================
+ */
+function updateBestMemoryStats() {
+  const stats = loadMemoryStats();
+
+  const updatedStats = {
+    bestTime:
+      stats.bestTime === null || timer < stats.bestTime ? timer : stats.bestTime,
+    bestMoves:
+      stats.bestMoves === null || moves < stats.bestMoves ? moves : stats.bestMoves,
+  };
+
+  saveMemoryStats(updatedStats);
+  renderMemoryStats();
+}
+
+
+/**
+ * ==========================================================
  * createCard(imageSrc, index)
  * ----------------------------------------------------------
  * Creates a single card element, assigns its image metadata,
@@ -171,9 +272,11 @@ function createCard(imageSrc, index) {
  * ===============================
  * INITIAL BOARD RENDER
  * ===============================
- * Create all shuffled cards and place them onto the board.
+ * Create all shuffled cards, place them onto the board,
+ * and render any saved best-performance statistics.
  */
 cards.forEach((src, i) => createCard(src, i));
+renderMemoryStats();
 
 
 /**
@@ -235,6 +338,7 @@ function flipCard(card) {
     // If all cards are matched, the game is complete
     if (document.querySelectorAll(".card.matched").length === cards.length) {
       stopTimer();
+      updateBestMemoryStats();
       alert(`You won in ${moves} moves and ${timer} seconds!`);
     }
 

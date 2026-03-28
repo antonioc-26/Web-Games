@@ -46,12 +46,23 @@ Notes:
       <!-- Displays the number of player moves -->
       <p>Moves: <span id="moves">0</span></p>
 
+      <!--
+        Persistent performance statistics
+        ---------------------------------
+        These values are stored in localStorage so returning players
+        can see their best performance across sessions.
+      -->
+      <div class="stats-panel">
+        <h2>Best Stats</h2>
+        <p>Best Time: <span id="bestTime">--</span></p>
+        <p>Best Moves: <span id="bestMoves">--</span></p>
+      </div>
+
       <!-- 
         Game board container.
         Cards are dynamically created and inserted here by memory.js.
       -->
       <div class="game-board" id="gameBoard"></div>
-
     </div>
 
     <div class="nav-buttons">
