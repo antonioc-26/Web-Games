@@ -1,62 +1,210 @@
 <!DOCTYPE html>
 <!--
-  Main Landing Page for Antonio's Mini Games
-  ------------------------------------------
-  This page serves as the central navigation hub for all games included
-  in the project. Each button routes the user to a separate game page.
+===============================================================================
+Author: Antonio Corona
+Date: 2026-03-27
+Project: Web Games Collection
+File: index.html
 
-  Technologies Used:
-  - HTML5 for structure
-  - CSS for styling (assets/css/style.css)
-  - JavaScript on individual game pages
+Description:
+This file serves as the portfolio-style landing page for the Web Games project.
+It introduces the collection, highlights the included games, and provides
+clear navigation into each playable experience.
+
+Responsibilities:
+- Present the project as a polished front-end portfolio piece
+- Introduce the technology stack and project goals
+- Provide clear entry points into each game
+- Improve first-impression quality for recruiters and GitHub visitors
+===============================================================================
 -->
 
 <html lang="en">
   <head>
-    <!-- Character encoding for proper text rendering -->
     <meta charset="UTF-8" />
-
-    <!-- Ensures responsive scaling on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Improves compatibility with older versions of Internet Explorer -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- Browser tab title -->
-    <title>Antonio's Mini Games</title>
-
-    <!-- Global stylesheet for layout and visual styling -->
+    <title>Web Games | Antonio Corona</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body>
-    <!-- Main page heading -->
-    <h1>Antonio's Mini Games!</h1>
+    <!--
+      =========================================================================
+      SITE HEADER
+      -------------------------------------------------------------------------
+      Provides a clean project heading and simple navigation to important
+      sections of the homepage.
+      =========================================================================
+    -->
+    <header class="site-header">
+      <div class="site-header__content">
+        <p class="site-header__eyebrow">Antonio Corona | Front-End JavaScript Project</p>
+        <h1 class="site-header__title">Web Games</h1>
+        <p class="site-header__subtitle">
+          A browser-based collection of interactive games built with HTML, CSS,
+          and JavaScript. This project showcases DOM manipulation, game-state
+          management, responsive design, and reusable front-end structure.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-link-button" href="#games">Explore Games</a>
+          <a
+            class="secondary-link-button"
+            href="https://github.com/antonioc-26/Web-Games"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repository
+          </a>
+        </div>
+      </div>
+    </header>
 
     <!--
-      Sidebar Navigation
-      ------------------
-      Provides quick access to each game in the project.
-      Each button uses a JavaScript redirect to navigate
-      to the corresponding HTML page.
+      =========================================================================
+      PROJECT HIGHLIGHTS
+      -------------------------------------------------------------------------
+      Gives visitors a quick snapshot of what this project demonstrates from a
+      technical and portfolio perspective.
+      =========================================================================
     -->
-    <nav class="sidebar">
+    <section class="highlights-section">
+      <div class="highlights-grid">
+        <article class="highlight-card">
+          <h2>Interactive UI</h2>
+          <p>
+            Built with vanilla JavaScript to handle user input, game logic,
+            board updates, and dynamic rendering.
+          </p>
+        </article>
 
-      <!-- Memory Card Matching Game -->
-      <button onclick="location.href='pages/memory.html'">
-        Memory Game
-      </button>
+        <article class="highlight-card">
+          <h2>Multiple Games</h2>
+          <p>
+            Includes a memory game, Rock Paper Scissors Lizard Spock, and
+            Nine Men’s Morris in one cohesive browser project.
+          </p>
+        </article>
 
-      <!-- Rock Paper Scissors Lizard Spock Game -->
-      <button onclick="location.href='pages/rock-paper-scissors-lizard-spock.html'">
-        Rock-Paper-Scissor-Lizard-Spock
-      </button>
+        <article class="highlight-card">
+          <h2>Portfolio Focused</h2>
+          <p>
+            Designed to demonstrate front-end fundamentals, maintainable code
+            structure, and clean project presentation on GitHub.
+          </p>
+        </article>
+      </div>
+    </section>
 
-      <!-- Nine Men's Morris Strategy Board Game -->
-      <button onclick="location.href='pages/nine-mens-morris.html'">
-        Nine Men's Morris
-      </button>
+    <!--
+      =========================================================================
+      FEATURED GAMES
+      -------------------------------------------------------------------------
+      Main project section containing cards for each playable game. Each card
+      includes a short description and a direct play link.
+      =========================================================================
+    -->
+    <main class="homepage-main" id="games">
+      <section class="games-section">
+        <div class="section-heading">
+          <p class="section-label">Playable Games</p>
+          <h2>Featured Experiences</h2>
+          <p>
+            Each game was built as part of a larger effort to strengthen front-end
+            development skills through interactive browser projects.
+          </p>
+        </div>
 
-    </nav>
+        <div class="games-grid">
+          <article class="game-card">
+            <div class="game-card__content">
+              <p class="game-card__tag">Memory & Matching</p>
+              <h3>Memory Game</h3>
+              <p>
+                A card-matching game that challenges players to remember card
+                locations while tracking moves and elapsed time.
+              </p>
+              <ul class="game-card__features">
+                <li>Dynamic board generation</li>
+                <li>Move tracking</li>
+                <li>Timer-based gameplay</li>
+              </ul>
+              <a class="card-link-button" href="pages/memory.html">Play Memory Game</a>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-card__content">
+              <p class="game-card__tag">Fast Decision Game</p>
+              <h3>Rock Paper Scissors Lizard Spock</h3>
+              <p>
+                An expanded version of Rock Paper Scissors with five possible
+                choices, score tracking, and round-based results.
+              </p>
+              <ul class="game-card__features">
+                <li>Round result feedback</li>
+                <li>Live score updates</li>
+                <li>Rule reference page</li>
+              </ul>
+              <a class="card-link-button" href="pages/rock-paper-scissors-lizard-spock.html">
+                Play RPSLS
+              </a>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-card__content">
+              <p class="game-card__tag">Strategy Board Game</p>
+              <h3>Nine Men’s Morris</h3>
+              <p>
+                A browser implementation of the classic strategy game featuring
+                piece placement, mill detection, movement, and win logic.
+              </p>
+              <ul class="game-card__features">
+                <li>Board-state management</li>
+                <li>Mill detection rules</li>
+                <li>Turn-by-turn status updates</li>
+              </ul>
+              <a class="card-link-button" href="pages/nine-mens-morris.html">
+                Play Nine Men’s Morris
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!--
+        =======================================================================
+        TECHNOLOGY STACK
+        -----------------------------------------------------------------------
+        Gives GitHub visitors a quick explanation of the technical scope of the
+        project without needing to read the README first.
+        =======================================================================
+      -->
+      <section class="tech-section">
+        <div class="section-heading">
+          <p class="section-label">Technology</p>
+          <h2>Built With</h2>
+        </div>
+
+        <div class="tech-pill-row">
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">CSS3</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Responsive Layouts</span>
+          <span class="tech-pill">DOM Manipulation</span>
+          <span class="tech-pill">Browser Storage</span>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      =========================================================================
+      FOOTER
+      =========================================================================
+    -->
+    <footer class="site-footer">
+      <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+    </footer>
   </body>
 </html>
