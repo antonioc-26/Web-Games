@@ -252,6 +252,29 @@ button:focus-visible,
 
 
 /* =========================================================
+   PERSISTENT STATS PANEL
+   ---------------------------------------------------------
+   Shared card-like panel used to display saved performance
+   or match-history statistics across game pages.
+   ========================================================= */
+
+.stats-panel {
+  margin: 20px 0;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  display: inline-block;
+  min-width: 220px;
+}
+
+.stats-panel h2 {
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+
+/* =========================================================
    MEMORY GAME
    ---------------------------------------------------------
    Styles for the memory card game layout, card appearance,
@@ -520,9 +543,6 @@ button:focus-visible,
   /* Uses Arial for this specific game section */
   font-family: Arial, sans-serif;
 
-  /* Background color intentionally left commented out */
-  /* background-color: #f4f4f9; */
-
   /* Uses flexbox to center the game container */
   display: flex;
 
@@ -530,14 +550,13 @@ button:focus-visible,
   justify-content: center;
 
   /* Centers vertically */
-  align-items: center;
+  align-items: flex-start;
 
   /* Full viewport height */
-  height: 80vh;
+  min-height: 100vh;
 
-  /* Removes default body/page margin inside this section */
-  margin: 0;
-  margin-top: 40px;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
 }
 
 /* Central content box for the RPSLS game */
@@ -556,6 +575,8 @@ button:focus-visible,
 
   /* Soft shadow around the container */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+  width: min(900px, 100%);
 }
 
 /* General button styling */
@@ -693,6 +714,14 @@ button:hover {
 
   /* Centers the score number text */
   text-align: center;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
 }
 
 /* Circular image-based choice buttons */

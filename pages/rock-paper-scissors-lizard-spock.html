@@ -108,6 +108,13 @@ JavaScript – game logic and interactivity
             </div>
           </div>
 
+          <div class="stats-panel">
+            <h2>Lifetime Stats</h2>
+            <p>Total Player Wins: <span id="totalPlayerWins">0</span></p>
+            <p>Total Computer Wins: <span id="totalComputerWins">0</span></p>
+            <p>Completed Matches: <span id="completedMatches">0</span></p>
+          </div>
+
           <!--
             Round result message.
             Updated dynamically by rpsls.js after each round.
@@ -121,24 +128,21 @@ JavaScript – game logic and interactivity
           <!-- <p id="scoreboard">Player: 0 | Computer: 0</p> -->
         </div>
 
+        <!-- Navigation button to return to the main game menu -->
+        <button onclick="location.href='../index.html'">Home Page</button>
+      
         <!--
           Button to reset the scoreboard.
           The reset behavior is implemented in the JavaScript file.
         -->
         <button id="reset">Reset Score</button>
 
+        <!-- Navigation button to go to the rules game page -->
+        <button onclick="location.href='rpsls-rules.html'">Rules</button>
+  
       </div>
     </div>
 
-    <div class="nav-buttons">
-      <!-- Navigation button to return to the main game menu -->
-      <button onclick="location.href='../index.html'">Home Page</button>
-    
-      <!-- Navigation button to go to the rules game page -->
-      <button onclick="location.href='rpsls-rules.html'">Rules</button>
-    </div>
-
-    
     <!--
       Game logic script
       -----------------
