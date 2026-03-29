@@ -41,48 +41,70 @@ Notes:
   </head>
 
   <body>
-    <!--
-      Main container for the Nine Men's Morris game interface.
-      Groups the game board and status display.
-    -->
-    <div class="nine-man-morris">
-      <h1>Nine Men’s Morris</h1>
+    <div class="page-shell page-shell--morris">
+      <header class="site-subheader">
+        <div class="site-subheader__content">
+          <p class="site-subheader__eyebrow">Web Games Collection</p>
+          <h1 class="site-subheader__title">Nine Men’s Morris</h1>   
+          <p class="site-subheader__description">
+            Play the classic strategy board game with piece placement, mills,
+            movement, and restart support.
+          </p>
 
-      <!--
-        Game board container.
-        The nested div elements represent the visual structure
-        of the Morris board including the three squares and
-        connecting lines.
-        Individual playable positions are created dynamically
-        via JavaScript.
-      -->
-      <div class="nineBoard" id="nineBoard">
-        <div class="square outer"></div>
-        <div class="square middle"></div>
-        <div class="square inner"></div>
+          <!-- Navigation button to main games menu (index page). -->
+          <div class="page-actions">
+            <a class="secondary-link-button" href="../index.html">Home Page</a>
+          </div>
+        </div>
+      </header>
 
-        <!-- Board connector lines -->
-        <div class="line horizontal"></div>
-        <div class="line vertical"></div>
-      </div>
+      <main class="page-main">
+        <div class="page-main__content">
 
-      <!--
-        Status display area.
-        JavaScript updates this element to show messages such as:
-        - Current player's turn
-        - Mill formation notifications
-        - Win conditions
-      -->
-      <div id="status" aria-live="polite"></div>
+          <!--
+            Main container for the Nine Men's Morris game interface.
+            Groups the game board and status display.
+          -->
+          <div class="nine-man-morris">
 
-      <!--
-        Navigation button allowing users to return to the main
-        games menu (index page).
-      -->
-      <div class="nav-buttons">
-        <button id="restart" type="button">Restart Game</button>
-        <button type="button" onclick="location.href='../index.html'">Home Page</button>
-      </div>
+            <!--
+              Game board container.
+              The nested div elements represent the visual structure
+              of the Morris board including the three squares and
+              connecting lines.
+              Individual playable positions are created dynamically
+              via JavaScript.
+            -->
+            <div class="nineBoard" id="nineBoard">
+              <div class="square outer"></div>
+              <div class="square middle"></div>
+              <div class="square inner"></div>
+
+              <!-- Board connector lines -->
+              <div class="line horizontal"></div>
+              <div class="line vertical"></div>
+            </div>
+          </div>
+          <!--
+            Status display area.
+            JavaScript updates this element to show messages such as:
+            - Current player's turn
+            - Mill formation notifications
+            - Win conditions
+          -->
+          <div id="status" aria-live="polite"></div>
+          
+          <!-- Restart Button-->
+          <div class="page-actions">
+            <button id="restart" type="button">Restart Game</button>
+          </div>
+          
+        </div>
+      </main>
+
+      <footer class="page-footer">
+        <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+      </footer>
     </div>
 
     <!--

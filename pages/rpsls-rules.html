@@ -42,8 +42,8 @@ CSS3 – layout and styling
         */
         .rules-container {
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
             gap: 40px;
             padding: 40px;
         }
@@ -52,19 +52,28 @@ CSS3 – layout and styling
             Rules image styling:
             Keeps the image responsive while limiting its maximum width.
         */
-        .rules-image img {
-            max-width: 400px;
-            height: auto;
+        .rules-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
         }
+
+        .rules-image img {
+            max-width: 1200px;
+            width: 100%;
+            height: auto;
+        }        
 
         /*
             Rules text section:
             Controls the readable width and improves spacing for paragraph content.
         */
         .rules-text {
+            flex: 1;
             max-width: 500px;
             font-size: 18px;
             line-height: 1.6;
+            text-align: left;
         }
 
         /*
@@ -85,63 +94,80 @@ CSS3 – layout and styling
 </head>
 
 <body>
+  <div class="page-shell">
+    <header class="site-subheader">
+      <div class="site-subheader__content">
+        <p class="site-subheader__eyebrow">Web Games Collection</p>
+        <h1 class="site-subheader__title">RPSLS Rules</h1>      <!-- Main page heading -->
+        <p class="site-subheader__description">
+          Learn how Rock Paper Scissors Lizard Spock works before jumping into a match.
+        </p>
 
-    <!-- Main page heading -->
-    <h1 style="text-align:center;">Rock Paper Scissors Lizard Spock Rules</h1>
-
-    <!-- Main content wrapper for the image and the rule explanation text -->
-    <div class="rules-container">
-
-        <!-- Left side: rules diagram image -->
-        <div class="rules-image">
-            <img src="../assets/images/rpsls/rpsls-rules.jpg" alt="RPSLS Rules Diagram">
+        <!-- Navigation buttons for returning to the game page or home page -->
+        <div class="page-actions">
+          <a class="secondary-link-button" href="../index.html">Home Page</a>
+          <a class="secondary-link-button" href="rock-paper-scissors-lizard-spock.html">Back to Game</a>
         </div>
+      </div>
+    </header>
 
-        <!-- Right side: written explanation of the game rules -->
-        <div class="rules-text">
+    <main class="page-main">
+      <div class="page-main__content">
 
-            <!-- Introductory explanation of the game -->
-            <p>
-                Rock Paper Scissors Lizard Spock is an expansion of the classic Rock Paper Scissors game.
-                Instead of three choices, players can choose from five options: Rock, Paper, Scissors, Lizard, or Spock.
-            </p>
+        <!-- Main content wrapper for the image and the rule explanation text -->
+        <div class="rules-container">
 
-            <!-- Summary of how the choice relationships work -->
-            <p>
-                Each option defeats two others and is defeated by two others.
-            </p>
-
-            <!-- Section label for the winning matchup list -->
-            <p><strong>Winning relationships:</strong></p>
-
-            <!-- List of all winning interactions in the game -->
-            <ul>
-                <li>Scissors cuts Paper</li>
-                <li>Paper covers Rock</li>
-                <li>Rock crushes Lizard</li>
-                <li>Lizard poisons Spock</li>
-                <li>Spock smashes Scissors</li>
-                <li>Scissors decapitates Lizard</li>
-                <li>Lizard eats Paper</li>
-                <li>Paper disproves Spock</li>
-                <li>Spock vaporizes Rock</li>
-                <li>Rock crushes Scissors</li>
-            </ul>
-
-            <!-- Closing explanation of gameplay flow -->
-            <p>
-                Players choose one option. The computer randomly selects another option.
-                The winner is the first one to reach 10 points which are determined by the relationships listed above.
-            </p>
-
-            <!-- Navigation buttons for returning to the game page or home page -->
-            <div class="nav-buttons">
-                <button onclick="location.href='rock-paper-scissors-lizard-spock.html'">Back to Game</button>
-                <button onclick="location.href='../index.html'">Home</button>
+            <!-- Left side: rules diagram image -->
+            <div class="rules-image">
+                <img src="../assets/images/rpsls/rpsls-rules.jpg" alt="RPSLS Rules Diagram">
             </div>
 
-        </div>
-    </div>
+            <!-- Right side: written explanation of the game rules -->
+            <div class="rules-text">
 
+                <!-- Introductory explanation of the game -->
+                <p>
+                    Rock Paper Scissors Lizard Spock is an expansion of the classic Rock Paper Scissors game.
+                    Instead of three choices, players can choose from five options: Rock, Paper, Scissors, Lizard, or Spock.
+                </p>
+
+                <!-- Summary of how the choice relationships work -->
+                <p>
+                    Each option defeats two others and is defeated by two others.
+                </p>
+
+                <!-- Section label for the winning matchup list -->
+                <p><strong>Winning relationships:</strong></p>
+
+                <!-- List of all winning interactions in the game -->
+                <ul>
+                    <li>Scissors cuts Paper</li>
+                    <li>Paper covers Rock</li>
+                    <li>Rock crushes Lizard</li>
+                    <li>Lizard poisons Spock</li>
+                    <li>Spock smashes Scissors</li>
+                    <li>Scissors decapitates Lizard</li>
+                    <li>Lizard eats Paper</li>
+                    <li>Paper disproves Spock</li>
+                    <li>Spock vaporizes Rock</li>
+                    <li>Rock crushes Scissors</li>
+                </ul>
+
+                <!-- Closing explanation of gameplay flow -->
+                <p>
+                    Players choose one option. The computer randomly selects another option.
+                    The winner is the first one to reach 10 points which are determined by the relationships listed above.
+                </p>
+
+            </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+    </footer>
+  </div>
 </body>
 </html>
