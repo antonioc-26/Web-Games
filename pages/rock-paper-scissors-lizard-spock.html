@@ -36,111 +36,98 @@ JavaScript – game logic and interactivity
   </head>
 
   <body>
-    <!-- Main wrapper for the RPSLS game interface -->
-    <div class="spock">
-      <div class="container">
+    <div class="page-shell">
+      <header class="site-subheader">
+        <div class="site-subheader__content">
+          <p class="site-subheader__eyebrow">Web Games Collection</p>
+          <h1 class="site-subheader__title">Rock Paper Scissors Lizard Spock</h1>   <!-- Game title -->
+          <p class="site-subheader__description">
+            Play an expanded version of Rock Paper Scissors with five choices,
+            live scoring, and persistent lifetime match statistics.
+          </p>
 
-        <!-- Game title -->
-        <h1>Rock Paper Scissors Lizard Spock</h1>
-
-        <!--
-          Choice Selection Area
-          ---------------------
-          Each image represents a selectable option in the game.
-          The data-choice attribute is used by the JavaScript logic
-          to determine which option the player selected.
-        -->
-        <div class="choices">
-          <img
-            src="../assets/images/rpsls/rock.jpg"
-            data-choice="Rock"
-            alt="Rock"
-            class="choice-button"
-          />
-          <img
-            src="../assets/images/rpsls/paper.jpg"
-            data-choice="Paper"
-            alt="Paper"
-            class="choice-button"
-          />
-          <img
-            src="../assets/images/rpsls/scissors.jpg"
-            data-choice="Scissors"
-            alt="Scissors"
-            class="choice-button"
-          />
-          <img
-            src="../assets/images/rpsls/lizard.webp"
-            data-choice="Lizard"
-            alt="Lizard"
-            class="choice-button"
-          />
-          <img
-            src="../assets/images/rpsls/spock.jpeg"
-            data-choice="Spock"
-            alt="Spock"
-            class="choice-button"
-          />
+          <div class="page-actions">
+            <a class="secondary-link-button" href="../index.html">Home Page</a>
+            <a class="secondary-link-button" href="rpsls-rules.html">Rules</a>
+          </div>
         </div>
+      </header>
 
-        <!--
-          Results and Scoreboard Section
-          ------------------------------
-          Displays the current score for the player and computer,
-          as well as the result of the current round.
-        -->
-        <div class="results">
-          <div class="scoreboard">
-            <div class="scoreboard_container">
+      <main class="page-main">
+        <div class="page-main__content">
+          <!-- Main wrapper for the RPSLS game interface -->
+          <div class="spock">
+            <div class="container">
 
-              <!-- Player Score Column -->
-              <div class="column">
-                <h3>PLAYER</h3>
-                <h2 id="playerScore" class="scoreboard_score">0</h2>
+              <!--
+                Choice Selection Area
+                ---------------------
+                Each image represents a selectable option in the game.
+                The data-choice attribute is used by the JavaScript logic
+                to determine which option the player selected.
+              -->
+              <div class="choices">
+                <img src="../assets/images/rpsls/rock.jpg" data-choice="Rock" alt="Rock" class="choice-button" />
+                <img src="../assets/images/rpsls/paper.jpg" data-choice="Paper" alt="Paper" class="choice-button" />
+                <img src="../assets/images/rpsls/scissors.jpg" data-choice="Scissors" alt="Scissors" class="choice-button" />
+                <img src="../assets/images/rpsls/lizard.webp" data-choice="Lizard" alt="Lizard" class="choice-button" />
+                <img src="../assets/images/rpsls/spock.jpeg" data-choice="Spock" alt="Spock" class="choice-button" />
               </div>
 
-              <!-- Computer Score Column -->
-              <div class="column">
-                <h3>COMPUTER</h3>
-                <h2 id="computerScore" class="scoreboard_score">0</h2>
+              <!--
+                Results and Scoreboard Section
+                ------------------------------
+                Displays the current score for the player and computer,
+                as well as the result of the current round.
+              -->
+              <div class="results">
+                <div class="scoreboard">
+                  <div class="scoreboard_container">
+                    <!-- Player Score Column -->
+                    <div class="column">
+                      <h3>PLAYER</h3>
+                      <h2 id="playerScore" class="scoreboard_score">0</h2>
+                    </div>
+
+                    <!-- Computer Score Column -->
+                    <div class="column">
+                      <h3>COMPUTER</h3>
+                      <h2 id="computerScore" class="scoreboard_score">0</h2>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="stats-panel">
+                  <h2>Lifetime Stats</h2>
+                  <p>Total Player Wins: <span id="totalPlayerWins">0</span></p>
+                  <p>Total Computer Wins: <span id="totalComputerWins">0</span></p>
+                  <p>Completed Matches: <span id="completedMatches">0</span></p>
+                </div>
+
+                <!--
+                  Round result message.
+                  Updated dynamically by rpsls.js after each round.
+                -->
+                <p id="round-result">Make your choice!</p>
+              </div>
+
+              <!--
+                Button to reset the scoreboard.
+                The reset behavior is implemented in the JavaScript file.
+              -->
+              <div class="page-actions">
+                <button id="reset" type="button">Reset Score</button>
               </div>
 
             </div>
           </div>
-
-          <div class="stats-panel">
-            <h2>Lifetime Stats</h2>
-            <p>Total Player Wins: <span id="totalPlayerWins">0</span></p>
-            <p>Total Computer Wins: <span id="totalComputerWins">0</span></p>
-            <p>Completed Matches: <span id="completedMatches">0</span></p>
-          </div>
-
-          <!--
-            Round result message.
-            Updated dynamically by rpsls.js after each round.
-          -->
-          <p id="round-result">Make your choice!</p>
-
-          <!--
-            Previous scoreboard display (deprecated).
-            Kept as a reference during development.
-          -->
-          <!-- <p id="scoreboard">Player: 0 | Computer: 0</p> -->
         </div>
+      </main>
 
-        <!-- Navigation button to return to the main game menu -->
-        <button onclick="location.href='../index.html'">Home Page</button>
-      
-        <!--
-          Button to reset the scoreboard.
-          The reset behavior is implemented in the JavaScript file.
-        -->
-        <button id="reset">Reset Score</button>
-
-        <!-- Navigation button to go to the rules game page -->
-        <button onclick="location.href='rpsls-rules.html'">Rules</button>
-  
-      </div>
+      <footer class="page-footer">
+        <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+      </footer>
     </div>
 
     <!--

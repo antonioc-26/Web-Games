@@ -278,6 +278,173 @@ button:focus-visible,
 
 
 /* =========================================================
+   SHARED INTERIOR PAGE LAYOUT
+   ---------------------------------------------------------
+   These styles define the common shell used across the game
+   pages so the project feels like one cohesive web app
+   instead of separate standalone pages.
+   ========================================================= */
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-shell--morris {
+  background: #D2C7A7;
+  color: #ffffff;
+}
+
+.site-subheader {
+  padding: 24px 20px 12px;
+  border-bottom: 1px solid #dbeafe;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/*
+.page-shell--morris .site-subheader {
+  background: #E3DDCF;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+*/
+
+.site-subheader__content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.site-subheader__eyebrow {
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4338ca;
+}
+
+/*
+.page-shell--morris .site-subheader__eyebrow {
+  color: #93c5fd;
+}
+*/
+
+.site-subheader__title {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+.site-subheader__description {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/*
+.page-shell--morris .site-subheader__description {
+  color: #d1d5db;
+}
+*/
+
+.page-main {
+  flex: 1;
+  padding: 32px 20px 32px;
+}
+
+.page-main__content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-footer {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+/*
+.page-shell--morris .page-footer {
+  color: #d1d5db;
+}
+*/
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   MORRIS HEADER THEME (EARTH-TONED DESIGN)
+   ---------------------------------------------------------
+   Overrides the default header styling to match the warm,
+   neutral color palette used by the Nine Men's Morris board.
+   This creates a cohesive visual identity across the page.
+   ========================================================= */
+
+.page-shell--morris .site-subheader {
+  /* Match board background for visual consistency */
+  background: #E6DFC8;
+
+  /* Subtle border to separate header from game area */
+  border-bottom: 1px solid #C8BFA6;
+}
+
+.page-shell--morris .site-subheader__title {
+  /* Strong readable heading using board line color */
+  color: #2b1b12;
+}
+
+.page-shell--morris .site-subheader__eyebrow {
+  /* Muted accent tone instead of bright blue */
+  color: #7A6A58;
+}
+
+.page-shell--morris .site-subheader__description {
+  /* Softer supporting text color */
+  color: #5C4B3B;
+}
+
+.page-shell--morris .site-subheader {
+  background: #E6DFC8;
+  border-bottom: 1px solid #C8BFA6;
+
+  /* Subtle depth effect */
+  box-shadow: 0 2px 8px rgba(43, 27, 18, 0.08);
+}
+
+
+/* =========================================================
+   MORRIS FOOTER THEME
+   ---------------------------------------------------------
+   Aligns the footer styling with the warm, neutral palette
+   used throughout the Nine Men's Morris page.
+   ========================================================= */
+
+.page-shell--morris .page-footer {
+  /* Match header + board for full-page consistency */
+  background: #E6DFC8;
+
+  /* Soft readable text color */
+  color: #5C4B3B;
+
+  /* Subtle separation from main content */
+  border-top: 1px solid #C8BFA6;
+
+  /* Adds breathing room */
+  padding: 20px;
+
+  /* Optional: slight depth for polish */
+  box-shadow: 0 -2px 8px rgba(43, 27, 18, 0.06);
+}
+
+
+/* =========================================================
    PERSISTENT STATS PANEL
    ---------------------------------------------------------
    Shared card-like panel used to display saved performance
@@ -399,10 +566,10 @@ button:focus-visible,
 /* Main page wrapper for the Nine Men's Morris game */
 .nine-man-morris {
   /* Dark background specific to this game page */
-  background: #222;
+  background: transparent;
 
   /* White text for contrast */
-  color: #fff;
+  color: #2f241b; /*#fff;*/
 
   /* Uses flexbox for page alignment */
   display: flex;
@@ -414,10 +581,10 @@ button:focus-visible,
   align-items: center;
 
   /* Centers content vertically */
-  justify-content: center;
+  justify-content: flex-start;
 
   /* Makes the game take up the full viewport height */
-  height: 100vh;
+  min-height: auto;
 
   /* Sets font for this section */
   font-family: sans-serif;
@@ -431,6 +598,9 @@ button:focus-visible,
 
 /* Main board container */
 .nineBoard {
+  /* Dark background specific to this game page */
+  background: #E6DFC8; /*transparent;*/
+
   /* Allows child elements to be absolutely positioned relative to the board */
   position: relative;
 
@@ -441,7 +611,13 @@ button:focus-visible,
   height: 500px;
 
   /* Outer border of the board */
-  border: 2px solid #fff;
+  border: 2px solid transparent; /*#2b1b12;*/
+
+  border-radius: 12px;
+}
+
+.nine-man-morris .nineBoard {
+  margin-top: 12px;
 }
 
 /* Nested board squares */
@@ -450,7 +626,7 @@ button:focus-visible,
   position: absolute;
 
   /* White square outlines */
-  border: 2px solid #fff;
+  border: 2px solid #2b1b12;
 
   /* Centers each square based on its top/left coordinates */
   transform: translate(-50%, -50%);
@@ -486,7 +662,7 @@ button:focus-visible,
   position: absolute;
 
   /* White line color */
-  background: #fff;
+  background: #2b1b12;
 }
 
 /* Horizontal connector line */
@@ -520,7 +696,7 @@ button:focus-visible,
   height: 16px;
 
   /* Default empty-point color */
-  background: #555;
+  background: #62534b;
 
   /* Makes the point circular */
   border-radius: 50%;
@@ -550,11 +726,21 @@ button:focus-visible,
 
 /* Game status text below the board */
 #status {
-  /* Adds spacing above the status message */
   margin-top: 20px;
-
-  /* Slightly enlarges the text */
   font-size: 1.2em;
+  font-weight: 600;
+
+  color: #2b1b12;
+
+  /* Subtle background badge effect */
+  background: #E6DFC8;
+  padding: 8px 16px;
+  border-radius: 10px;
+
+  /* Soft border for separation */
+  border: 1px solid #C8BFA6;
+
+  display: inline-block;
 }
 
 /* =========================================================
