@@ -10,6 +10,22 @@ Play the project here:
 
 ---
 
+## Screenshots
+
+### Home Page
+![Landing Page Preview](assets/images/screenshots/landing-page-preview.jpg)
+
+### Memory Game
+![Memory Game Preview](assets/images/screenshots/memory-preview.jpg)
+
+### Rock Paper Scissors Lizard Spock
+![RPSLS Preview](assets/images/screenshots/rpsls-preview.jpg)
+
+### Nine Men’s Morris
+![Nine Men's Morris Preview](assets/images/screenshots/morris-preview.jpg)
+
+---
+
 ## Project Overview
 
 Web Games is a front-end portfolio project that combines multiple browser-playable experiences into one cohesive site. The project focuses on:
@@ -30,10 +46,13 @@ This repository is intended to demonstrate both technical fundamentals and proje
 A classic card-matching game where the player flips cards to find matching pairs.
 
 **Highlights**
+**Highlights**
 - dynamically generated card board
 - move counter
 - live timer
 - persistent best-score tracking with `localStorage`
+- animated card flip transitions
+- in-page win modal with new game flow
 
 ### 2. Rock Paper Scissors Lizard Spock
 An expanded version of Rock Paper Scissors with five move options and round-based scoring.
@@ -149,6 +168,11 @@ web-games/
 │   ├── css
 │   │   └── style.css
 │   ├── images
+│   │   ├── screenshots
+│   │   │   ├── landing-page-preview.png
+│   │   │   ├── memory-preview.png
+│   │   │   ├── morris-preview.png
+│   │   │   └── rpsls-preview.png
 │   │   ├── memory
 │   │   │   ├── Card1.jpg
 │   │   │   ├── Card2.jpg
@@ -174,7 +198,7 @@ web-games/
 ├── package.json
 └── pages
     ├── memory.html
-    ├── nine-mems-morris.html
+    ├── nine-mens-morris.html
     ├── rock-paper-scissors-lizard-spock.html
     └── rpsls-rules.html  
 ```
