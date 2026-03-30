@@ -83,6 +83,9 @@ const memoryWinModal = document.getElementById("memoryWinModal");
 const memoryWinMessage = document.getElementById("memoryWinMessage");
 const memoryModalNewGameButton = document.getElementById("memoryModalNewGameButton");
 
+// Button used to clear persisted best-score records for the Memory Game
+const resetMemoryBestStatsButton = document.getElementById("resetMemoryBestStatsButton");
+
 
 /**
  * ===============================
@@ -186,6 +189,21 @@ function loadMemoryStats() {
  */
 function saveMemoryStats(stats) {
   localStorage.setItem(MEMORY_STATS_KEY, JSON.stringify(stats));
+}
+
+
+/**
+ * ==========================================================
+ * resetBestMemoryStats()
+ * ----------------------------------------------------------
+ * Clears the persisted best-score records for the Memory Game
+ * from localStorage and immediately refreshes the visible
+ * stats panel in the UI.
+ * ==========================================================
+ */
+function resetBestMemoryStats() {
+  localStorage.removeItem(MEMORY_STATS_KEY);
+  renderMemoryStats();
 }
 
 
@@ -342,6 +360,15 @@ if (memoryModalNewGameButton) {
     hideWinModal();
     resetGame();
   });
+}
+
+/*
+  Attach the best-stats reset button if the control exists on
+  the page. This allows the player to clear saved best scores
+  and start fresh.
+*/
+if (resetMemoryBestStatsButton) {
+  resetMemoryBestStatsButton.addEventListener("click", resetBestMemoryStats);
 }
 
 
