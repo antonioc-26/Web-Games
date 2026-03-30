@@ -1,6 +1,6 @@
 /*
 Author: Antonio Corona
-Date: 2026-03-14
+Date: 2026-03-30
 
 Stylesheet
 
@@ -190,10 +190,6 @@ button:focus-visible,
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.game-card {
-  text-align: left;
-}
-
 .game-card__content {
   padding: 28px;
 }
@@ -248,6 +244,267 @@ button:focus-visible,
   .site-header__subtitle {
     font-size: 1rem;
   }
+}
+
+
+/* =========================================================
+   HOMEPAGE GAME CARD THUMBNAILS
+   ---------------------------------------------------------
+   These styles define the visual presentation of preview
+   images displayed at the top of each homepage game card.
+   The thumbnails help the landing page feel more polished
+   and product-like for portfolio viewers.
+   ========================================================= */
+
+.game-card__thumbnail {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: #e5e7eb;
+}
+
+
+/* =========================================================
+   CLICKABLE HOMEPAGE GAME CARDS
+   ---------------------------------------------------------
+   These styles allow each homepage game card to function as
+   a full clickable link while preserving the visual card
+   design. Hover and focus states provide stronger visual
+   feedback and a more polished portfolio presentation.
+   ========================================================= */
+
+.game-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 16px;
+}
+
+.game-card {
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/*
+  Lift and shadow effect on hover
+  -------------------------------
+  Mirrors the polished hover behavior used in more refined
+  portfolio card layouts. The card subtly rises and casts
+  a stronger shadow to reinforce interactivity.
+*/
+.game-card-link:hover .game-card,
+.game-card-link:focus-visible .game-card {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+/*
+  Slight image zoom on hover
+  --------------------------
+  Adds motion to the preview thumbnail while keeping the
+  card layout stable. The overflow-hidden thumbnail wrapper
+  prevents the zoomed image from spilling outside the card.
+*/
+.game-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.game-card-link:hover .game-card__image,
+.game-card-link:focus-visible .game-card__image {
+  transform: scale(1.05);
+}
+
+/*
+  Visible keyboard-focus state for accessibility
+  ----------------------------------------------
+  Ensures keyboard users can clearly identify which card is
+  currently focused.
+*/
+.game-card-link:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   SHARED INTERIOR PAGE LAYOUT
+   ---------------------------------------------------------
+   These styles define the common shell used across the game
+   pages so the project feels like one cohesive web app
+   instead of separate standalone pages.
+   ========================================================= */
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-shell--morris {
+  background: #D2C7A7;
+  color: #ffffff;
+}
+
+.site-subheader {
+  padding: 24px 20px 12px;
+  border-bottom: 1px solid #dbeafe;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.site-subheader__content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.site-subheader__eyebrow {
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4338ca;
+}
+
+.site-subheader__title {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+.site-subheader__description {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.page-main {
+  flex: 1;
+  padding: 32px 20px 32px;
+}
+
+.page-main__content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-footer {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   DOCUMENT / PDF VIEWER PAGE
+   ---------------------------------------------------------
+   These styles support pages that embed reference documents
+   such as rules PDFs within the shared project layout.
+   ========================================================= */
+
+.document-viewer-section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.document-viewer-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  padding: 24px;
+}
+
+.document-viewer-description {
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.document-viewer-frame {
+  width: 100%;
+  min-height: 780px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   MORRIS HEADER THEME (EARTH-TONED DESIGN)
+   ---------------------------------------------------------
+   Overrides the default header styling to match the warm,
+   neutral color palette used by the Nine Men's Morris board.
+   This creates a cohesive visual identity across the page.
+   ========================================================= */
+
+.page-shell--morris .site-subheader {
+  /* Match board background for visual consistency */
+  background: #E6DFC8;
+
+  /* Subtle border to separate header from game area */
+  border-bottom: 1px solid #C8BFA6;
+}
+
+.page-shell--morris .site-subheader__title {
+  /* Strong readable heading using board line color */
+  color: #2b1b12;
+}
+
+.page-shell--morris .site-subheader__eyebrow {
+  /* Muted accent tone instead of bright blue */
+  color: #7A6A58;
+}
+
+.page-shell--morris .site-subheader__description {
+  /* Softer supporting text color */
+  color: #5C4B3B;
+}
+
+.page-shell--morris .site-subheader {
+  background: #E6DFC8;
+  border-bottom: 1px solid #C8BFA6;
+
+  /* Subtle depth effect */
+  box-shadow: 0 2px 8px rgba(43, 27, 18, 0.08);
+}
+
+
+/* =========================================================
+   MORRIS FOOTER THEME
+   ---------------------------------------------------------
+   Aligns the footer styling with the warm, neutral palette
+   used throughout the Nine Men's Morris page.
+   ========================================================= */
+
+.page-shell--morris .page-footer {
+  /* Match header + board for full-page consistency */
+  background: #E6DFC8;
+
+  /* Soft readable text color */
+  color: #5C4B3B;
+
+  /* Subtle separation from main content */
+  border-top: 1px solid #C8BFA6;
+
+  /* Adds breathing room */
+  padding: 20px;
+
+  /* Optional: slight depth for polish */
+  box-shadow: 0 -2px 8px rgba(43, 27, 18, 0.06);
 }
 
 
@@ -363,6 +620,97 @@ button:focus-visible,
   min-height: 80vh;
 }
 
+
+/* =========================================================
+   MEMORY GAME CARD FLIP ANIMATION
+   ---------------------------------------------------------
+   These styles convert each memory card into a two-sided
+   flipping element. The revealed state rotates the inner
+   wrapper to show the card face instead of the card back.
+   ========================================================= */
+
+.card {
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  background: transparent;
+  perspective: 1000px;
+  padding: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s ease;
+  transform-style: preserve-3d;
+}
+
+.card.revealed .card__inner,
+.card.matched .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__face--front {
+  transform: rotateY(180deg);
+}
+
+.card__face--back {
+  transform: rotateY(0deg);
+}
+
+.card__face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* =========================================================
+   MEMORY GAME WIN MODAL
+   ---------------------------------------------------------
+   Displays a centered overlay when the user completes the
+   game, replacing the browser alert with a more polished UI.
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+}
+
+
 /* =========================================================
    NINE MEN'S MORRIS
    ---------------------------------------------------------
@@ -373,10 +721,10 @@ button:focus-visible,
 /* Main page wrapper for the Nine Men's Morris game */
 .nine-man-morris {
   /* Dark background specific to this game page */
-  background: #222;
+  background: transparent;
 
   /* White text for contrast */
-  color: #fff;
+  color: #2f241b; /*#fff;*/
 
   /* Uses flexbox for page alignment */
   display: flex;
@@ -388,10 +736,10 @@ button:focus-visible,
   align-items: center;
 
   /* Centers content vertically */
-  justify-content: center;
+  justify-content: flex-start;
 
   /* Makes the game take up the full viewport height */
-  height: 100vh;
+  min-height: auto;
 
   /* Sets font for this section */
   font-family: sans-serif;
@@ -405,6 +753,9 @@ button:focus-visible,
 
 /* Main board container */
 .nineBoard {
+  /* Dark background specific to this game page */
+  background: #E6DFC8; /*transparent;*/
+
   /* Allows child elements to be absolutely positioned relative to the board */
   position: relative;
 
@@ -415,7 +766,13 @@ button:focus-visible,
   height: 500px;
 
   /* Outer border of the board */
-  border: 2px solid #fff;
+  border: 2px solid transparent; /*#2b1b12;*/
+
+  border-radius: 12px;
+}
+
+.nine-man-morris .nineBoard {
+  margin-top: 12px;
 }
 
 /* Nested board squares */
@@ -424,7 +781,7 @@ button:focus-visible,
   position: absolute;
 
   /* White square outlines */
-  border: 2px solid #fff;
+  border: 2px solid #2b1b12;
 
   /* Centers each square based on its top/left coordinates */
   transform: translate(-50%, -50%);
@@ -460,7 +817,7 @@ button:focus-visible,
   position: absolute;
 
   /* White line color */
-  background: #fff;
+  background: #2b1b12;
 }
 
 /* Horizontal connector line */
@@ -494,7 +851,7 @@ button:focus-visible,
   height: 16px;
 
   /* Default empty-point color */
-  background: #555;
+  background: #937b6d;
 
   /* Makes the point circular */
   border-radius: 50%;
@@ -524,11 +881,21 @@ button:focus-visible,
 
 /* Game status text below the board */
 #status {
-  /* Adds spacing above the status message */
   margin-top: 20px;
-
-  /* Slightly enlarges the text */
   font-size: 1.2em;
+  font-weight: 600;
+
+  color: #2b1b12;
+
+  /* Subtle background badge effect */
+  background: #E6DFC8;
+  padding: 8px 16px;
+  border-radius: 10px;
+
+  /* Soft border for separation */
+  border: 1px solid #C8BFA6;
+
+  display: inline-block;
 }
 
 /* =========================================================

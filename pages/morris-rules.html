@@ -1,0 +1,89 @@
+<!--
+===============================================================================
+Author: Antonio Corona
+Date: 2026-03-29
+Project: Web Games Collection
+File: morris-rules.html
+
+Description:
+This page provides a dedicated rules reference view for the Nine Men’s Morris
+game. It embeds a PDF directly in the browser so users can review the rules
+without leaving the project site.
+
+Responsibilities:
+- Present the Nine Men’s Morris rules PDF in an embedded viewer
+- Maintain the shared layout and navigation style of the project
+- Provide direct navigation back to the homepage and Morris game page
+===============================================================================
+-->
+
+<!DOCTYPE html>   
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nine Men’s Morris Rules | Web Games</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="page-shell">
+      <header class="site-subheader">
+        <div class="site-subheader__content">
+          <p class="site-subheader__eyebrow">Web Games Collection</p>
+          <h1 class="site-subheader__title">Nine Men’s Morris Rules</h1>
+          <p class="site-subheader__description">
+            Review the official game rules and strategies before returning to
+            the board.
+          </p>
+
+          <div class="page-actions">
+            <a class="secondary-link-button" href="../index.html">Home Page</a>
+            <a class="secondary-link-button" href="nine-mens-morris.html">Back to Game</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-main">
+        <div class="page-main__content">
+          <!--
+            Embedded PDF viewer
+            -------------------
+            Displays the Morris rules document directly in the browser for a
+            more polished in-project reading experience.
+          -->
+          <section class="document-viewer-section">
+            <div class="document-viewer-card">
+              <h2>Rules Reference</h2>
+              <p class="document-viewer-description">
+                If the embedded preview does not appear in your browser, use the
+                direct PDF link below.
+              </p>
+
+              <div class="page-actions">
+                <a
+                  class="primary-link-button"
+                  href="../assets/docs/nine-mens-morris-rules.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open PDF in New Tab
+                </a>
+              </div>
+
+              <iframe
+                class="document-viewer-frame"
+                src="../assets/docs/nine-mens-morris-rules.pdf"
+                title="Nine Men's Morris Rules PDF"
+              ></iframe>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="page-footer">
+        <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -34,44 +34,85 @@ Notes:
   </head>
 
   <body>
-    <!-- Page header -->
-    <h1>Memory Game</h1>
+    <div class="page-shell">
+      <header class="site-subheader">
+        <div class="site-subheader__content">
+          <p class="site-subheader__eyebrow">Web Games Collection</p>
+          <!-- Page header -->
+          <h1 class="site-subheader__title">Memory Game</h1>
+          <p class="site-subheader__description">
+            Match pairs of cards while tracking your time, moves, and best
+            saved performance.
+          </p>
 
-    <!-- Main container for the game interface -->
-    <div class="game-container">
+          <div class="page-actions">
+             <!-- Navigation button to return to the main games menu -->
+            <a class="secondary-link-button" href="../index.html">Home Page</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-main">
+        <div class="page-main__content">
+
+          <!-- Main container for the game interface -->
+          <div class="game-container">
+            
+            <!--
+              Persistent performance statistics
+              ---------------------------------
+              These values are stored in localStorage so returning players
+              can see their best performance across sessions.
+            -->
+            <div class="stats-panel">
+              <h2>Best Stats</h2>
+              <p>Best Time: <span id="bestTime">--</span></p>
+              <p>Best Moves: <span id="bestMoves">--</span></p>
+
+              <div class="page-actions">
+                <button id="resetMemoryBestStatsButton" type="button">
+                  Reset Best Scores
+                </button>
+              </div>
+            </div>
+
+            <!-- Displays elapsed game time (updated via JavaScript) -->
+            <p>Time: <span id="timer">0</span> seconds</p>
+
+            <!-- Displays the number of player moves -->
+            <p>Moves: <span id="moves">0</span></p>
+
+            <!-- 
+              Game board container.
+              Cards are dynamically created and inserted here by memory.js.
+            -->
+            <div class="game-board" id="gameBoard"></div>
       
-      <!-- Displays elapsed game time (updated via JavaScript) -->
-      <p>Time: <span id="timer">0</span> seconds</p>
+            <!-- Navigation button to reset the memory game -->
+            <div class="page-actions">
+              <button id="memoryResetButton" type="button">Reset Game</button>
+            </div>
 
-      <!-- Displays the number of player moves -->
-      <p>Moves: <span id="moves">0</span></p>
+            <!--  Win modal - Displayed when the player matches all cards. -->
+            <div class="modal-overlay hidden" id="memoryWinModal" aria-hidden="true">
+              <div class="modal-card" role="dialog" aria-labelledby="memoryWinTitle" aria-modal="true">
+                <h2 id="memoryWinTitle">You Win!</h2>
+                <p id="memoryWinMessage">You completed the game.</p>
+                <div class="page-actions">
+                  <button id="memoryModalNewGameButton" type="button">New Game</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </main>
 
-      <!--
-        Persistent performance statistics
-        ---------------------------------
-        These values are stored in localStorage so returning players
-        can see their best performance across sessions.
-      -->
-      <div class="stats-panel">
-        <h2>Best Stats</h2>
-        <p>Best Time: <span id="bestTime">--</span></p>
-        <p>Best Moves: <span id="bestMoves">--</span></p>
-      </div>
-
-      <!-- 
-        Game board container.
-        Cards are dynamically created and inserted here by memory.js.
-      -->
-      <div class="game-board" id="gameBoard"></div>
+      <footer class="page-footer">
+        <p>Developed by Antonio Corona • Web Games Portfolio Project</p>
+      </footer>
     </div>
 
-    <div class="nav-buttons">
-      <!-- Navigation button to reset the memory game -->
-      <button onclick="resetGame()">Reset Game</button>
-      
-      <!-- Navigation button to return to the main games menu -->
-      <button onclick="location.href='../index.html'">Home Page</button>
-    </div>
     <!-- 
       JavaScript file containing the game logic:
       - Card generation

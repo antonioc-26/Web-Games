@@ -697,7 +697,7 @@ function restartGame() {
   gameOver = false;
   formedMills.clear();
 
-  updateStatus("White begins (placing pieces).");
+  updateStatus("White begins (placing pieces)");
 }
 
 
@@ -707,4 +707,4 @@ function restartGame() {
  * ===============================
  * Displays the starting instruction when the page loads.
  */
-updateStatus("White begins (placing pieces).");
+updateStatus("White begins (placing pieces)");

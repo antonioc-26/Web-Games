@@ -75,6 +75,17 @@ const bestMovesDisplay = document.getElementById("bestMoves");
 // Storage key used to persist memory game statistics in the browser
 const MEMORY_STATS_KEY = "webGames.memory.stats";
 
+// Reset button shown on the main game screen
+const memoryResetButton = document.getElementById("memoryResetButton");
+
+// Win modal elements used when the player completes the board
+const memoryWinModal = document.getElementById("memoryWinModal");
+const memoryWinMessage = document.getElementById("memoryWinMessage");
+const memoryModalNewGameButton = document.getElementById("memoryModalNewGameButton");
+
+// Button used to clear persisted best-score records for the Memory Game
+const resetMemoryBestStatsButton = document.getElementById("resetMemoryBestStatsButton");
+
 
 /**
  * ===============================
@@ -100,6 +111,9 @@ let timer = 0;
 
 // Stores the active timer interval reference
 let timerInterval = null;
+
+// Indicates whether the current board has been completed
+let gameFinished = false;
 
 
 /**
@@ -180,6 +194,21 @@ function saveMemoryStats(stats) {
 
 /**
  * ==========================================================
+ * resetBestMemoryStats()
+ * ----------------------------------------------------------
+ * Clears the persisted best-score records for the Memory Game
+ * from localStorage and immediately refreshes the visible
+ * stats panel in the UI.
+ * ==========================================================
+ */
+function resetBestMemoryStats() {
+  localStorage.removeItem(MEMORY_STATS_KEY);
+  renderMemoryStats();
+}
+
+
+/**
+ * ==========================================================
  * renderMemoryStats()
  * ----------------------------------------------------------
  * Updates the stats panel in the UI using currently saved
@@ -194,6 +223,23 @@ function renderMemoryStats() {
 
   bestMovesDisplay.textContent =
     stats.bestMoves === null ? "--" : stats.bestMoves;
+}
+
+
+/**
+ * ==========================================================
+ * updateMemoryResetButtonLabel()
+ * ----------------------------------------------------------
+ * Keeps the reset button text aligned with the current game
+ * state. While a game is active or not yet completed, the
+ * control reads "Reset Game". After a completed board, the
+ * label changes to "New Game".
+ * ==========================================================
+ */
+function updateMemoryResetButtonLabel() {
+  if (!memoryResetButton) return;
+
+  memoryResetButton.textContent = gameFinished ? "New Game" : "Reset Game";
 }
 
 
@@ -225,18 +271,18 @@ function updateBestMemoryStats() {
  * ==========================================================
  * createCard(imageSrc, index)
  * ----------------------------------------------------------
- * Creates a single card element, assigns its image metadata,
- * and adds it to the game board.
- *
- * Each card starts face down and can be flipped by the player.
+ * Creates a single memory card with a front and back face so
+ * CSS can animate a flip transition between the hidden state
+ * and the revealed image state.
  *
  * Parameters:
- *   {string} imageSrc - The image path associated with the card
- *   {number} index - The card's position index in the shuffled array
+ *   {string} imageSrc - Card face image path
+ *   {number} index    - Position index within the shuffled set
  * ==========================================================
  */
 function createCard(imageSrc, index) {
-  const card = document.createElement("div");
+  const card = document.createElement("button");
+  card.type = "button";
   card.className = "card";
 
   /**
@@ -252,13 +298,34 @@ function createCard(imageSrc, index) {
    * duplicate interactions with the same card.
    */
   card.dataset.index = index;
+  card.setAttribute("aria-label", "Memory card");
+  card.setAttribute("aria-pressed", "false");
 
-  const img = document.createElement("img");
+  const cardInner = document.createElement("div");
+  cardInner.className = "card__inner";
+
+  const cardFront = document.createElement("div");
+  cardFront.className = "card__face card__face--front";
+
+  const frontImage = document.createElement("img");
+  frontImage.src = imageSrc;
+  frontImage.alt = "Memory card front image";
+
+  const cardBack = document.createElement("div");
+  cardBack.className = "card__face card__face--back";
+
+  const backImage = document.createElement("img");
 
   // Display the back-of-card image while face down
-  img.src = "../assets/images/memory/backofcard.jpg";
+  backImage.src = "../assets/images/memory/backofcard.jpg";
+  backImage.alt = "Back of memory card";
 
-  card.appendChild(img);
+  cardFront.appendChild(frontImage);
+  cardBack.appendChild(backImage);
+
+  cardInner.appendChild(cardFront);
+  cardInner.appendChild(cardBack);
+  card.appendChild(cardInner);
 
   // Flip the card when clicked
   card.addEventListener("click", () => flipCard(card));
@@ -277,6 +344,32 @@ function createCard(imageSrc, index) {
  */
 cards.forEach((src, i) => createCard(src, i));
 renderMemoryStats();
+
+updateMemoryResetButtonLabel();
+
+/*
+  Attach button behavior for the Memory Game reset control and
+  the win-modal new-game action.
+*/
+if (memoryResetButton) {
+  memoryResetButton.addEventListener("click", resetGame);
+}
+
+if (memoryModalNewGameButton) {
+  memoryModalNewGameButton.addEventListener("click", () => {
+    hideWinModal();
+    resetGame();
+  });
+}
+
+/*
+  Attach the best-stats reset button if the control exists on
+  the page. This allows the player to clear saved best scores
+  and start fresh.
+*/
+if (resetMemoryBestStatsButton) {
+  resetMemoryBestStatsButton.addEventListener("click", resetBestMemoryStats);
+}
 
 
 /**
@@ -312,11 +405,9 @@ function flipCard(card) {
     startTimer();
   }
 
-  const img = card.querySelector("img");
-
-  // Reveal the card's front image
-  img.src = card.dataset.image;
+  // Reveal the card visually using the CSS flip class
   card.classList.add("revealed");
+  card.setAttribute("aria-pressed", "true");
 
   // First card selection of the turn
   if (!first) {
@@ -339,21 +430,23 @@ function flipCard(card) {
     if (document.querySelectorAll(".card.matched").length === cards.length) {
       stopTimer();
       updateBestMemoryStats();
-      alert(`You won in ${moves} moves and ${timer} seconds!`);
+      showWinModal();
+      gameFinished = true;
+      updateMemoryResetButtonLabel();
     }
 
     resetTurn();
   } else {
     // No match: briefly show the cards, then flip them back
     setTimeout(() => {
-      first.querySelector("img").src = "../assets/images/memory/backofcard.jpg";
-      second.querySelector("img").src = "../assets/images/memory/backofcard.jpg";
-
       first.classList.remove("revealed");
       second.classList.remove("revealed");
 
+      first.setAttribute("aria-pressed", "false");
+      second.setAttribute("aria-pressed", "false");
+
       resetTurn();
-    }, 1000);
+    }, 900);
   }
 }
 
@@ -373,6 +466,37 @@ function flipCard(card) {
 function resetTurn() {
   [first, second] = [null, null];
   lock = false;
+}
+
+
+/**
+ * ==========================================================
+ * showWinModal()
+ * ----------------------------------------------------------
+ * Displays the end-of-game modal with the player's final
+ * move count and completion time.
+ * ==========================================================
+ */
+function showWinModal() {
+  memoryWinMessage.textContent =
+    `You finished the game in ${moves} moves and ${timer} seconds.`;
+
+  memoryWinModal.classList.remove("hidden");
+  memoryWinModal.setAttribute("aria-hidden", "false");
+}
+
+
+/**
+ * ==========================================================
+ * hideWinModal()
+ * ----------------------------------------------------------
+ * Hides the win modal so the player can return to the board
+ * or begin a new game.
+ * ==========================================================
+ */
+function hideWinModal() {
+  memoryWinModal.classList.add("hidden");
+  memoryWinModal.setAttribute("aria-hidden", "true");
 }
 
 
@@ -414,37 +538,35 @@ function stopTimer() {
  * ==========================================================
  * resetGame()
  * ----------------------------------------------------------
- * Restarts the Memory Game so the player can play again.
+ * Starts a fresh Memory Game session with a reshuffled board.
  *
  * Actions performed:
  *  - Stop the current timer
- *  - Reset timer and move counters
- *  - Clear turn-tracking state
- *  - Remove all existing cards from the board
- *  - Reshuffle the cards
- *  - Rebuild the board with a fresh layout
+ *  - Reset game-tracking state
+ *  - Clear the current board
+ *  - Shuffle the card order
+ *  - Rebuild the card grid
+ *  - Restore the default reset-button label
+ *  - Hide the win modal if it is open
  * ==========================================================
  */
 function resetGame() {
   stopTimer();
 
-  // Reset game state values
   first = null;
   second = null;
   lock = false;
   moves = 0;
   timer = 0;
+  gameFinished = false;
 
-  // Reset UI displays
   movesDisplay.textContent = moves;
   document.getElementById("timer").textContent = timer;
 
-  // Clear the current board
+  hideWinModal();
+  updateMemoryResetButtonLabel();
+
   board.innerHTML = "";
-
-  // Reshuffle the existing card array in place
   shuffle(cards);
-
-  // Rebuild the board with the new shuffled order
   cards.forEach((src, i) => createCard(src, i));
 }

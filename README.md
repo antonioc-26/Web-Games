@@ -1,5 +1,7 @@
 # Web Games
 
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
+
 A browser-based collection of interactive games built with **HTML, CSS, and JavaScript**.  
 This project was created to strengthen front-end development skills through game logic, DOM manipulation, UI design, and browser-side state management.
 
@@ -7,6 +9,22 @@ This project was created to strengthen front-end development skills through game
 
 Play the project here:  
 **https://antonioc-26.github.io/Web-Games/**
+
+---
+
+## Screenshots
+
+### Home Page
+![Landing Page Preview](assets/images/screenshots/landing-page-preview.jpg)
+
+### Memory Game
+![Memory Game Preview](assets/images/screenshots/memory-preview.jpg)
+
+### Rock Paper Scissors Lizard Spock
+![RPSLS Preview](assets/images/screenshots/rpsls-preview.jpg)
+
+### Nine Men’s Morris
+![Nine Men's Morris Preview](assets/images/screenshots/morris-preview.jpg)
 
 ---
 
@@ -19,6 +37,7 @@ Web Games is a front-end portfolio project that combines multiple browser-playab
 - dynamic DOM updates
 - reusable front-end organization
 - persistent browser storage for player statistics
+- polished UI enhancements for a stronger portfolio presentation
 
 This repository is intended to demonstrate both technical fundamentals and project presentation quality for internships and entry-level software roles.
 
@@ -30,10 +49,14 @@ This repository is intended to demonstrate both technical fundamentals and proje
 A classic card-matching game where the player flips cards to find matching pairs.
 
 **Highlights**
-- dynamically generated card board
+- dynamically generated game board
 - move counter
 - live timer
 - persistent best-score tracking with `localStorage`
+- reset best-scores control
+- animated card flip transitions
+- in-page win modal with new game flow
+- dynamic reset/new game button behavior
 
 ### 2. Rock Paper Scissors Lizard Spock
 An expanded version of Rock Paper Scissors with five move options and round-based scoring.
@@ -42,7 +65,9 @@ An expanded version of Rock Paper Scissors with five move options and round-base
 - computer opponent with randomized choice generation
 - live score updates
 - persistent lifetime match statistics with `localStorage`
+- lifetime statistics reset control
 - dedicated rules page
+- shared project layout and navigation
 
 ### 3. Nine Men’s Morris
 A browser implementation of the classic strategy board game.
@@ -53,6 +78,7 @@ A browser implementation of the classic strategy board game.
 - mill detection
 - turn-based status messaging
 - restart support
+- dedicated rules page with embedded PDF viewer
 
 ---
 
@@ -62,6 +88,7 @@ A browser implementation of the classic strategy board game.
 - **CSS3**
 - **Vanilla JavaScript**
 - **localStorage**
+- **Responsive Design**
 - **Node.js / serve** for optional local hosting
 
 ---
@@ -73,10 +100,28 @@ This project was built to showcase practical front-end skills, including:
 - DOM manipulation
 - event-driven JavaScript
 - game-state management
-- browser storage
+- browser storage with `localStorage`
 - responsive layout structure
+- reusable page layout design
+- UI polish through hover effects, animations, and modal interactions
 - maintainable project organization
-- user-focused UI improvements
+- user-focused front-end improvements
+
+---
+
+## Key Portfolio Improvements
+
+Recent upgrades to the project include:
+
+- redesigned homepage with preview thumbnails
+- fully clickable homepage game cards with hover effects
+- shared header, footer, and page shell across the project
+- animated Memory Game card flips
+- Memory Game win modal replacing `alert()`
+- reset and new-game flow improvements
+- persistent stats reset controls
+- embedded PDF rules page for Nine Men’s Morris
+- expanded README with screenshots and setup guidance
 
 ---
 
@@ -148,7 +193,14 @@ web-games/
 ├── assets
 │   ├── css
 │   │   └── style.css
+│   ├── docs
+│   │   └── nine-mens-morris-rules.pdf
 │   ├── images
+│   │   ├── screenshots
+│   │   │   ├── landing-page-preview.jpg
+│   │   │   ├── memory-preview.jpg
+│   │   │   ├── morris-preview.jpg
+│   │   │   └── rpsls-preview.jpg
 │   │   ├── memory
 │   │   │   ├── Card1.jpg
 │   │   │   ├── Card2.jpg
@@ -157,7 +209,7 @@ web-games/
 │   │   │   ├── card4.jpeg
 │   │   │   ├── card5.jpeg
 │   │   │   ├── card6.jpg
-│   │   │   ├── card7.jpg
+│   │   │   ├── card7.jpgjpg
 │   │   │   └── card8.jpg
 │   │   └── rpsls
 │   │       ├── lizard.webp
@@ -174,9 +226,10 @@ web-games/
 ├── package.json
 └── pages
     ├── memory.html
-    ├── nine-mems-morris.html
+    ├── morris-rules.html
+    ├── nine-mens-morris.html
     ├── rock-paper-scissors-lizard-spock.html
-    └── rpsls-rules.html  
+    └── rpsls-rules.html
 ```
 
 ---
