@@ -1,5 +1,7 @@
 # Web Games
 
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
+
 A browser-based collection of interactive games built with **HTML, CSS, and JavaScript**.  
 This project was created to strengthen front-end development skills through game logic, DOM manipulation, UI design, and browser-side state management.
 
