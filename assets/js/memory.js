@@ -109,6 +109,9 @@ let timer = 0;
 // Stores the active timer interval reference
 let timerInterval = null;
 
+// Indicates whether the current board has been completed
+let gameFinished = false;
+
 
 /**
  * ==========================================================
@@ -202,6 +205,23 @@ function renderMemoryStats() {
 
   bestMovesDisplay.textContent =
     stats.bestMoves === null ? "--" : stats.bestMoves;
+}
+
+
+/**
+ * ==========================================================
+ * updateMemoryResetButtonLabel()
+ * ----------------------------------------------------------
+ * Keeps the reset button text aligned with the current game
+ * state. While a game is active or not yet completed, the
+ * control reads "Reset Game". After a completed board, the
+ * label changes to "New Game".
+ * ==========================================================
+ */
+function updateMemoryResetButtonLabel() {
+  if (!memoryResetButton) return;
+
+  memoryResetButton.textContent = gameFinished ? "New Game" : "Reset Game";
 }
 
 
@@ -307,6 +327,8 @@ function createCard(imageSrc, index) {
 cards.forEach((src, i) => createCard(src, i));
 renderMemoryStats();
 
+updateMemoryResetButtonLabel();
+
 /*
   Attach button behavior for the Memory Game reset control and
   the win-modal new-game action.
@@ -382,6 +404,8 @@ function flipCard(card) {
       stopTimer();
       updateBestMemoryStats();
       showWinModal();
+      gameFinished = true;
+      updateMemoryResetButtonLabel();
     }
 
     resetTurn();
@@ -487,37 +511,35 @@ function stopTimer() {
  * ==========================================================
  * resetGame()
  * ----------------------------------------------------------
- * Restarts the Memory Game so the player can play again.
+ * Starts a fresh Memory Game session with a reshuffled board.
  *
  * Actions performed:
  *  - Stop the current timer
- *  - Reset timer and move counters
- *  - Clear turn-tracking state
- *  - Remove all existing cards from the board
- *  - Reshuffle the cards
- *  - Rebuild the board with a fresh layout
+ *  - Reset game-tracking state
+ *  - Clear the current board
+ *  - Shuffle the card order
+ *  - Rebuild the card grid
+ *  - Restore the default reset-button label
+ *  - Hide the win modal if it is open
  * ==========================================================
  */
 function resetGame() {
   stopTimer();
 
-  // Reset game state values
   first = null;
   second = null;
   lock = false;
   moves = 0;
   timer = 0;
+  gameFinished = false;
 
-  // Reset UI displays
   movesDisplay.textContent = moves;
   document.getElementById("timer").textContent = timer;
 
-  // Clear the current board
+  hideWinModal();
+  updateMemoryResetButtonLabel();
+
   board.innerHTML = "";
-
-  // Reshuffle the existing card array in place
   shuffle(cards);
-
-  // Rebuild the board with the new shuffled order
   cards.forEach((src, i) => createCard(src, i));
 }
