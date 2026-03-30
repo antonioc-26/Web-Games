@@ -355,6 +355,39 @@ button:focus-visible,
 
 
 /* =========================================================
+   DOCUMENT / PDF VIEWER PAGE
+   ---------------------------------------------------------
+   These styles support pages that embed reference documents
+   such as rules PDFs within the shared project layout.
+   ========================================================= */
+
+.document-viewer-section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.document-viewer-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  padding: 24px;
+}
+
+.document-viewer-description {
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.document-viewer-frame {
+  width: 100%;
+  min-height: 780px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+
+/* =========================================================
    MORRIS HEADER THEME (EARTH-TONED DESIGN)
    ---------------------------------------------------------
    Overrides the default header styling to match the warm,

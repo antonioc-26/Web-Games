@@ -167,6 +167,8 @@ web-games/
 ├── assets
 │   ├── css
 │   │   └── style.css
+│   ├── docs
+│   │   └── nine-mens-morris-rules.pdf
 │   ├── images
 │   │   ├── screenshots
 │   │   │   ├── landing-page-preview.png
@@ -198,9 +200,10 @@ web-games/
 ├── package.json
 └── pages
     ├── memory.html
+    ├── morris-rules.html
     ├── nine-mens-morris.html
     ├── rock-paper-scissors-lizard-spock.html
-    └── rpsls-rules.html  
+    └── rpsls-rules.html
 ```
 
 ---
