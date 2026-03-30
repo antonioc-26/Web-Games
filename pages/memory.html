@@ -87,7 +87,17 @@ Notes:
               <button id="memoryResetButton" type="button">Reset Game</button>
             </div>
 
-            <!-- Win modal will be added in a later branch -->
+            <!--  Win modal - Displayed when the player matches all cards. -->
+            <div class="modal-overlay hidden" id="memoryWinModal" aria-hidden="true">
+              <div class="modal-card" role="dialog" aria-labelledby="memoryWinTitle" aria-modal="true">
+                <h2 id="memoryWinTitle">You Win!</h2>
+                <p id="memoryWinMessage">You completed the game.</p>
+                <div class="page-actions">
+                  <button id="memoryModalNewGameButton" type="button">New Game</button>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </main>
