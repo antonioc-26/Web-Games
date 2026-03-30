@@ -49,6 +49,9 @@ const resetBtn = document.getElementById("reset");
 const computerScoreEl = document.getElementById("computerScore");
 const playerScoreEl = document.getElementById("playerScore");
 
+// Button used to clear the saved lifetime statistics for RPSLS
+const resetRpslsLifetimeStatsButton = document.getElementById("resetRpslsLifetimeStatsButton");
+
 
 /**
  * ===============================
@@ -115,6 +118,22 @@ function loadRpslsStats() {
 function saveRpslsStats(stats) {
   localStorage.setItem(RPSLS_STATS_KEY, JSON.stringify(stats));
 }
+
+
+/**
+ * ==========================================================
+ * resetRpslsLifetimeStats()
+ * ----------------------------------------------------------
+ * Clears the persisted lifetime statistics for Rock Paper
+ * Scissors Lizard Spock and immediately refreshes the stats
+ * panel so the user sees the reset values right away.
+ * ==========================================================
+ */
+function resetRpslsLifetimeStats() {
+  localStorage.removeItem(RPSLS_STATS_KEY);
+  renderRpslsStats();
+}
+
 
 /**
  * ==========================================================
@@ -344,3 +363,11 @@ resetBtn.addEventListener("click", () => {
  */
 renderRpslsStats();
 updateScore();
+
+/*
+  Attach the lifetime-stats reset control when present so
+  users can clear long-term saved RPSLS records.
+*/
+if (resetRpslsLifetimeStatsButton) {
+  resetRpslsLifetimeStatsButton.addEventListener("click", resetRpslsLifetimeStats);
+}
